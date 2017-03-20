@@ -1,0 +1,11 @@
+<div class="movieItem" data-ng-repeat="x in searchresults">
+  <div class="moviePoster">
+    <img src="https://image.tmdb.org/t/p/w150{{x.poster_path}}" alt="{{x.title}}"/>
+  </div>
+    <div class="movieInfo">
+      <h3>{{x.title}}</h3>
+      <h4>Summary:</h4>
+      <p class="movieSummary">{{x.overview}}</p>
+      <p class="releaseDate">Release date: {{x.release_date}}</p>
+  </div>
+</div>

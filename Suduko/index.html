@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="images/favicon.ico" />
+
+        <title>Declan Wright</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="..//css/bootstrap.min.css" rel="stylesheet">
+        <!-- custom CSS -->
+        <link href="..//css/myStyles.css" rel="stylesheet">
+    </head>
+
+    <body onload="initialize();">
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.php">Declan Wright</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="..//index.php">Home</a></li>
+                        <li class="active"><a href="..//examples.html">Work</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="content-wrapper">
+                <p>A Sudoku puzzle. You must get the numbers 0-9 in each of the
+            3x3 grids without having repeated values in the column, row or 3x3
+            grid. The page will notify you if you break one of these rules.</p>
+                <table align=center id="sudoku" cellspacing=0>
+                    <tr>
+                        <td id="cell_0_0">2</td>
+                        <td id="cell_1_0"></td>
+                        <td id="cell_2_0"></td>
+                        <td id="cell_3_0"></td>
+                        <td id="cell_4_0"></td>
+                        <td id="cell_5_0">7</td>
+                        <td id="cell_6_0"></td>
+                        <td id="cell_7_0"></td>
+                        <td id="cell_8_0"></td>
+                    </tr>
+                    <tr>
+                        <td id="cell_0_1"></td>
+                        <td id="cell_1_1">5</td>
+                        <td id="cell_2_1"></td>
+                        <td id="cell_3_1"></td>
+                        <td id="cell_4_1">2</td>
+                        <td id="cell_5_1"></td>
+                        <td id="cell_6_1"></td>
+                        <td id="cell_7_1">1</td>
+                        <td id="cell_8_1"></td>
+                    </tr>
+                    <tr>
+                        <td id="cell_0_2"></td>
+                        <td id="cell_1_2">3</td>
+                        <td id="cell_2_2"></td>
+                        <td id="cell_3_2"></td>
+                        <td id="cell_4_2">8</td>
+                        <td id="cell_5_2"></td>
+                        <td id="cell_6_2"></td>
+                        <td id="cell_7_2">7</td>
+                        <td id="cell_8_2"></td>
+                    </tr>
+                    <tr>
+                        <td id="cell_0_3"></td>
+                        <td id="cell_1_3"></td>
+                        <td id="cell_2_3">5</td>
+                        <td id="cell_3_3">7</td>
+                        <td id="cell_4_3"></td>
+                        <td id="cell_5_3"></td>
+                        <td id="cell_6_3"></td>
+                        <td id="cell_7_3"></td>
+                        <td id="cell_8_3">2</td>
+                    </tr>
+                    <tr>
+                        <td id="cell_0_4">1</td>
+                        <td id="cell_1_4"></td>
+                        <td id="cell_2_4"></td>
+                        <td id="cell_3_4"></td>
+                        <td id="cell_4_4"></td>
+                        <td id="cell_5_4"></td>
+                        <td id="cell_6_4"></td>
+                        <td id="cell_7_4"></td>
+                        <td id="cell_8_4">3</td>
+                    </tr>
+                    <tr>
+                        <td id="cell_0_5">9</td>
+                        <td id="cell_1_5"></td>
+                        <td id="cell_2_5"></td>
+                        <td id="cell_3_5"></td>
+                        <td id="cell_4_5"></td>
+                        <td id="cell_5_5">6</td>
+                        <td id="cell_6_5">1</td>
+                        <td id="cell_7_5"></td>
+                        <td id="cell_8_5"></td>
+                    </tr>
+                    <tr>
+                        <td id="cell_0_6"></td>
+                        <td id="cell_1_6">2</td>
+                        <td id="cell_2_6"></td>
+                        <td id="cell_3_6"></td>
+                        <td id="cell_4_6">7</td>
+                        <td id="cell_5_6"></td>
+                        <td id="cell_6_6"></td>
+                        <td id="cell_7_6">8</td>
+                        <td id="cell_8_6"></td>
+                    </tr>
+                    <tr>
+                        <td id="cell_0_7"></td>
+                        <td id="cell_1_7">8</td>
+                        <td id="cell_2_7"></td>
+                        <td id="cell_3_7"></td>
+                        <td id="cell_4_7">9</td>
+                        <td id="cell_5_7"></td>
+                        <td id="cell_6_7"></td>
+                        <td id="cell_7_7">5</td>
+                        <td id="cell_8_7"></td>
+                    </tr>
+                    <tr>
+                        <td id="cell_0_8"></td>
+                        <td id="cell_1_8"></td>
+                        <td id="cell_2_8"></td>
+                        <td id="cell_3_8">4</td>
+                        <td id="cell_4_8"></td>
+                        <td id="cell_5_8"></td>
+                        <td id="cell_6_8"></td>
+                        <td id="cell_7_8"></td>
+                        <td id="cell_8_8">6</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div><!-- /.container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="../jquery-1.9.1.min.js"></script>
+        <script src="..//js/bootstrap.min.js"></script>
+        <script src="../myFunctions.js"></script>
+        <script>
+        var current_cell = null; // the currently selected cell
+        function initialize() {
+            var col, row;
+            // Work through all the cells in the table and set
+            // onclick event handlers and classNames for the empty
+            // ones.
+            for (row = 0; row <= 8; row++) {
+                for (col = 0; col <= 8; col++) {
+                    var cell = document.getElementById('cell_' + col + '_' + row);
+                    if (!parseInt(cell.innerHTML)) {
+                        // cell is empty
+                        cell.onclick = selectCell;
+                        cell.className = 'tofill';
+                    }
+                }
+            }
+            document.onkeypress = keyPress;
+        }
+
+        /**
+         * Mouse button event handler
+         */
+        function selectCell() {
+            if (current_cell !== null) {
+                current_cell.className = 'tofill';
+            }
+            current_cell = this;
+            current_cell.className = 'selected';
+        }
+
+        /**
+         * Capture keyboard key presses. If the key pressed is a digit
+         * then add it to the current cell. If it is a space then empty
+         * the current cell.
+         */
+        function keyPress(evt) {
+            if (current_cell == null)
+                return;
+            var key;
+            if (evt)
+                // firefox or chrome
+                key = String.fromCharCode(evt.charCode);
+            else
+                // IE
+                key = String.fromCharCode(event.keyCode);
+            if (key == ' ')
+                current_cell.innerHTML = '';
+            else if (key >= 1 && key <= 9) {
+                enforceRules(current_cell, key);
+            }
+        }
+
+        /**
+         * Enforces the rules of sudoku. Alerts the user to which rule has 
+         * been broken depending on the response it receives
+         * @param cell The cell being edited
+         * @param num The value being entered
+         */
+        function enforceRules(cell, num)
+        {
+            var posRow = cell.id.charAt((cell.id.length) - 1);
+            var posCol = cell.id.charAt((cell.id.length) - 3);
+            resp = checkRow(posRow, posCol, num);
+            if (resp == "rowError")
+            {
+                alert("Value already exists in row");
+            }
+            else if (resp == "colError")
+            {
+                alert("Value already exists in column");
+            }
+            else if (resp == "gridError")
+            {
+                alert("Value already exists in grid");
+            }
+            else if (resp == "clear")
+            {
+                cell.innerHTML = num;
+            }
+        }
+
+        /**
+         * Check the current row for the entered value, returns a error string if value is found
+         * @param currentRow The row number of the currently selected cell
+         * @param currentCol The column number of the currently selected cell
+         * @param num The value being entered
+         */
+        function checkRow(currentRow, currentCol, num)
+        {
+            var i;
+            for (i = 0; i <= 8; i++)
+            {
+                if (document.getElementById('cell_' + i + '_' + currentRow).innerHTML == num)
+                {
+                    return "rowError";
+                }
+            }
+            return checkCol(currentRow, currentCol, num);
+        }
+
+        /**
+         * Checks the current column for entered value, returns an error 
+         * string if value is found
+         * @param currentRow The row number of the currently selected cell
+         * @param currentCol The column number of the currently selected cell
+         * @param num The value being entered
+         */
+        function checkCol(currentRow, currentCol, num)
+        {
+            var i;
+            for (i = 0; i <= 8; i++)
+            {
+                if (document.getElementById('cell_' + currentCol + '_' + i).innerHTML == num)
+                {
+                    return "colError";
+                }
+            }
+            return checkGrid(currentRow, currentCol, num);
+        }
+
+        /**
+         * Checks the current grid for entered value, returns an error string if value is found
+         * @param posRow The row number of the currently selected cell
+         * @param posCol The column number of the currently selected cell
+         * @param num The value being entered
+         */
+        function checkGrid(posRow, posCol, num)
+        {
+            var startRow;
+            var startCol;
+            if ((posRow >= 0) && (posRow <= 2))
+            {
+                startRow = 0;
+            }
+            else if ((posRow >= 3) && (posRow <= 5))
+            {
+                startRow = 3;
+            }
+            else if ((posRow >= 6) && (posRow <= 8))
+            {
+                startRow = 6;
+            }
+            if ((posCol >= 0) && (posCol <= 2))
+            {
+                startCol = 0;
+            }
+            else if ((posCol >= 3) && (posCol <= 5))
+            {
+                startCol = 3;
+            }
+            else if ((posCol >= 6) && (posCol <= 8))
+            {
+                startCol = 6;
+            }
+            var i;
+            var j;
+            for (i = startRow; i <= (startRow + 2); i++)
+            {
+                for (j = startCol; j <= (startCol + 2); j++)
+                {
+                    if (document.getElementById('cell_' + j + '_' + i).innerHTML == num)
+                    {
+                        return "gridError";
+                    }
+                }
+            }
+            return "clear";
+        }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="images/favicon.ico" />
+
+        <title>Declan Wright</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- custom CSS -->
+        <link href="css/myStyles.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.php">Declan Wright</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.php">Home</a></li>
+                        <li class="active"><a href="examples.html">Work</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="content-wrapper">
+                <h2 class="example-header">Example Work</h2>
+                <div id="Smartyblog" class="work boxShadow">
+                    <h3>Smarty Template Blog</h3>
+                    <p>This started as something I needed to look up for an interview which turned in a small project for
+                      me to learn <a href="http://www.smarty.net/">"smarty templating"</a> which is a php templating engine. It separates the php and html code
+                      so the php code sets up and assigns the values to variables that you then reference in the .tpl file that
+                    is used to set which HTML is used for the page. In the HTML file variables are referenced by {variableName} and then the data
+                    in the variable repalces it in the page output.
+                  </p>
+                    <p>Viewable here: <a href="/smartyblog">Test Dashboard</a></p>
+                </div>
+                <div id="TestDashboard" class="work boxShadow">
+                    <h3>Bootstrap Test Dashboard</h3>
+                    <p>This started off as a technical exercise for a interview that
+                    I took as a way to learn more bootstrap as it is not something I got
+                  to use a lot. There is also some angular on the page to control a few of the features
+                as this was part of the exercise. Only some mock data was provided so most of the tabs
+              are empty unfortunately so alot of the options are placeholders but it was more about the layout than
+                the data itself.
+                  </p>
+                    <p>Viewable here: <a href="/TestDashboard">Test Dashboard</a></p>
+                </div>
+                <div id="angularMovieApp" class="work boxShadow">
+                    <h3>Movie Search App (Angular version)</h3>
+                    <p>This is a new version of the movie search app found below but
+                      this was rewrtten to use Angular only, there is no PHP used in this version.
+                      It is my first real angular project and it is a one page application
+                      so there is no page reloading. It still sues the same API on the back end
+                    but the angular processes the JSON response and then uses it to build
+                  HTML to show on the page.</p>
+                    <p>Viewable here: <a href="/AngularMovieSearch">Movie Search</a></p>
+                </div>
+                <!-- <div id="slideshow" class="work boxShadow">
+                    <h3>Picture Slideshow</h3>
+                    <p>This uses a plugin for jQuery called the basic jQuery slider.
+                        It creates a slide show of images that is defined in a
+                        list and has a function attached to it to create the
+                        animation. this plugin was found through my job at SLI
+                        as one of the clients was using it and I had to solve
+                        a few issues we were having with it so I had to look
+                        into it. It is showing a images from my trip to
+                        New Zealand.
+                    </p>
+                    <p>Viewable here: <a href="/Slideshow">Picture Slideshow</a></p>
+                </div> -->
+                <div id="lastFM" class="work boxShadow">
+                    <h3>LastFM Feed</h3>
+                    <p>Another API feed from LastFM to fetch my last played
+                        tracks and my top artists, albums and tracks. It uses
+                        a drop down menu to send AJAX requests to the server
+                        to load up the appropriate chart. Each chart is an XML
+                        request through the API that returns and is then processed
+                        by the PHP script before being loaded onto the page.
+                    </p>
+                    <p>Viewable here: <a href="/LastFM">LastFM</a></p>
+                </div>
+                <div id="blogger" class="work boxShadow">
+                    <h3>Blogger Feed</h3>
+                    <p>More web API work. This uses the blogger API from Google to
+                        retrieve my posts from Blogger (BlogSpot) and display them.
+                        It uses PHP to process the returned XML file.</p>
+                    <p>Viewable here: <a href="index.php">Blogger</a></p>
+                </div>
+                <div id="movieApp" class="work boxShadow">
+                    <h3>Movie Search App (PHP version)</h3>
+                    <p>Another API I have used to create a simple movie information
+                        finder. It uses a movie database API to look up the entered
+                        movie and returns the top 5 matches.It uses the XML
+                        processing of PHP to process the returned XML file.</p>
+                    <p>Viewable here: <a href="/MovieSearch">Movie Search</a></p>
+                </div>
+                <div id="twitterFeed" class="work boxShadow">
+                    <h3>Twitter Feed</h3>
+                    <p>Been looking into different APIs and started to experiment
+                        with them. This page uses the twitter API to fetch my tweets
+                        and displays them on this website. I have recently updated this to use
+                      angularJS. There is a PHP file that fetches the JSON data from the twitter API
+                    and then uses angular to process this response and create the HTML displayed</p>
+                    <p>Viewable here <a href="/TwitterApp">Tweets</a></p>
+                </div>
+                <div id="BlogStore" class="work boxShadow">
+                    <h3> Online Seller Blog System </h3>
+                    <p>This was originally an assessment as part of an E-Commerce module.
+                        The task was to create a blog system that allowed an admin to attach
+                        files to a post so they could be sold to users. Only users with an
+                        account are able to see and buy the files. The project uses PHP, MySQL,
+                        HTML and CSS. It uses a PDO object to access the database of users and posts.
+                        The payment system is an integration of the Google Checkout libraries. Sadly google
+                      discontinued google checkout in 2013 so this functionality no longer works. </p>
+                    <p>Viewable here: <a href="/BlogStore">Blog Store</a></p>
+                </div>
+                <div id="wineStore" class="work boxShadow">
+                    <h3> Online Wine Store</h3>
+                    <p>My first large PHP project. The task was to create a store that
+                        sold wine and create an online storefront for it. Users have their own
+                        shopping cart to keep track of their current purchases. The project
+                        uses PHP, MySQL, HTML, CSS and PHP Sessions. It uses a PDO object to
+                        access the database of wines.</p>
+                    <p>Viewable here: <a href="/WineStore">Wine Store</a></p>
+                </div>
+                <div id="sudokuPuzzle" class="work boxShadow">
+                    <h3>Suduko Puzzle</h3>
+                    <p>Another assessment that used JavaScript to enforce the rules
+                        of Suduko on the provided puzzle. The task was to implement these
+                        rules using JavaScript and nothing else. The JavaScript used can
+                        be seen in the source of this page.</p>
+                    <p>Viewable here: <a href="/Suduko">Suduko Puzzle</a></p>
+                </div>
+                <div id="welding" class="work boxShadow">
+                    <h3> Welding Course Enrolment </h3>
+                    <p>This was another assessment and is my first experience with jQuery.
+                        The task was to create a page that allowed users to select modules
+                        for a welding course. The jQuery library is used to limit the selections
+                        based on the rules for the course.</p>
+                    <p>Viewable here: <a href="/Welding">Welding Enrolment</a></p>
+                </div>
+            </div>
+
+        </div><!-- /.container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="jquery-1.9.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="myFunctions.js"></script>
+    </body>
+</html>

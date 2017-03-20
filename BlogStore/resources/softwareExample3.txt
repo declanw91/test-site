@@ -1,0 +1,23 @@
+This script will take a number from the user and print out that times table. It is written in PHP.
+
+<?php
+	if(isset($_POST['go']))
+	{
+		for($i = 0; $i <= 12; $i++)
+		{
+			echo $i."x".$_POST['num']."=".($i*$_POST['num']);
+		}
+		echo '<form action="" method="POST"><input type="submit" name="back" value="Back"/></form>';
+	}
+	else if(isset($_POST['back']))
+	{
+		unset($_POST['go']);
+		echo '<form action="" method="POST"><p> Enter times table you want: </p> <input type="text" name="num"/>
+				<input type="submit" name="go" value="Go"/></form>'
+	}
+	else
+	{
+		echo '<form action="" method="POST"><p> Enter times table you want: </p> <input type="text" name="num"/>
+				<input type="submit" name="go" value="Go"/></form>';
+	}
+?>
