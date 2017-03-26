@@ -37,6 +37,7 @@ body {
   top: 50%;
   z-index: 100;
   width: 40%;
+  background: #FF0000;
 }
 
 .successMessageWrapper {
@@ -46,6 +47,7 @@ body {
   top: 50%;
   z-index: 100;
   width: 40%;
+  background: #FFFFFF;
 }
 
 .pageOverlay {

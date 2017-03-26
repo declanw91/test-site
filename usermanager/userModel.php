@@ -1,5 +1,5 @@
 <?php
-  include('/storage.php');
+  include('storage.php');
   $storageObject = new storage();
   if($_POST) {
     if ($_POST['method'] == "save") {

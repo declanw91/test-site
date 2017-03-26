@@ -1,7 +1,7 @@
 userdisplay.controller('userdisplayctrl', function($scope, $http) {
   $scope.sortType = 'lastName';
   $scope.getUsers = function(){
-    var requestUrl = '/usermanager/userModel.php?method=getUsers';
+    var requestUrl = '/portfolio/usermanager/userModel.php?method=getUsers';
     $http.get(requestUrl)
     .then(function (response) {
         $scope.userresults = response.data;
