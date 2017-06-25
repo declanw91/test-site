@@ -27,6 +27,12 @@ function UserListViewModel() {
       fields = self.objectifyForm(fields);
       var newUser = new userObject(fields);
       self.users.push(newUser);
+      jQuery.ajax({
+            url: "savedata.php",
+            data: {'userdatafile': ko.toJSON(self.users)},
+            type: "post", 
+            success: function(result) { jQuery('a[href="#userlist"]').trigger('click'); }
+        });
     }
 }
 
