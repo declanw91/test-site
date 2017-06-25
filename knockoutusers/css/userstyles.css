@@ -1,0 +1,77 @@
+body {
+  padding-top: 50px;
+}
+
+.innerpagewrapper {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.searchFormOption {
+  display: none;
+}
+
+.searchFormOption.active {
+  display: block;
+}
+
+.tableheaders th {
+  text-align: center;
+}
+
+#adduser .formOption {
+  float: left;
+  width: 32%;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.errorclosebutton {
+  clear: both;
+}
+
+.errorMessageWrapper {
+  display: none;
+  position: absolute;
+  left: 23%;
+  top: 50%;
+  z-index: 100;
+  width: 40%;
+  background: #FF0000;
+}
+
+.successMessageWrapper {
+  display: none;
+  position: absolute;
+  left: 41%;
+  top: 50%;
+  z-index: 100;
+  width: 40%;
+  background: #FFFFFF;
+}
+
+.pageOverlay {
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: #F9F9F9;
+  opacity: 0.5;
+}
+
+.tab-content {
+  border-left: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  border-right: 1px solid #DDD;
+}
+
+.updateuserarea {
+  display: none;
+}
+
+.addusersubmitwrapper {
+  clear: both;
+  display: block;
+}
