@@ -12,8 +12,8 @@ function UserListViewModel() {
     self.users = ko.observableArray();
     self.removeUser = function(user) { self.users.destroy(user) };
     jQuery.getJSON("userdata.json", function(allData) {
-        var mappedTasks = $.map(allData, function(item) { return new userObject(item) });
-        self.users(mappedTasks);
+        var mappedUsers = $.map(allData, function(item) { return new userObject(item) });
+        self.users(mappedUsers);
     });
     self.objectifyForm = function(formArray) {
       var returnArray = {};
