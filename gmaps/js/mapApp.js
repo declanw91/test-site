@@ -1,11 +1,33 @@
 var map;
-var mapPoints = [{"Name":"London", "Lat": 51.5, "Lng":-0.11},{"Name": "StatueOfLiberty", "Lat": 40.6891, "Lng":-74.0445}];
+var mapPoints = [
+  {"Name":"London", "Lat": 51.5, "Lng":-0.11},
+  {"Name": "Statue Of Liberty", "Lat": 40.6891, "Lng":-74.0445}, 
+  {"Name":"Manhattan","Lat":40.7257,"Lng":-74.0047},
+  {"Name": "New York", "Lat": 40.727093,"Lng":-73.97864},
+  {"Name": "Los Angeles", "Lat":34.088808, "Lng":-118.40612},
+  {"Name":"Miami", "Lat":25.767368, "Lng":-80.18930}
+];
 var defaultMapOptions = {center: new google.maps.LatLng(mapPoints[0].Lat,mapPoints[0].Lng), zoom: 8};
 function initMap() {
 	var infowindow = new google.maps.InfoWindow();
   var london = new google.maps.LatLng(mapPoints[0].Lat,mapPoints[0].Lng);
   var mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, defaultMapOptions);
+}
+
+function placeMarker(loc) {
+    var latLng = new google.maps.LatLng( loc.Lat, loc.Lng);
+    var marker = new google.maps.Marker({
+      position : latLng,
+      map      : map,
+      title: loc.Name
+    });
+}
+
+function placeAllMarkers() {
+  for(var i = 0; i < mapPoints.length; i++) {
+    placeMarker(mapPoints[i]);
+  }
 }
 
 function attachEvents() {
@@ -45,6 +67,9 @@ function attachEvents() {
   });
   jQuery('#resetMap').click(function(){
     map.setOptions(defaultMapOptions);
+  });
+  jQuery('#loadMarkers').click(function(){
+    placeAllMarkers();
   });
 }
 
