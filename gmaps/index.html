@@ -43,6 +43,8 @@
               <div class="toolbar">
                 <button id="getMapValues" class="btn btn-info">Get Values</button>
                 <button id="jumpTo" class="btn btn-info">Jump To</button>
+                <button id="setZoom" class="btn btn-info">Set Zoom Level</button>
+                <button id="resetMap" class="btn btn-info">Reset Map</button>
               </div>
               <div id="map">
               
@@ -80,12 +82,34 @@
                         </div>
                         <div class="modal-body">
                           <p>Where would you like to jump to?</p>
-                          <button data-point="1" class="placebutton btn btn-info">London</button>
-                          <button data-point="2" class="placebutton btn btn-info">Statue of Liberty</button>
+                          <button data-point="0" class="placebutton btn btn-info">London</button>
+                          <button data-point="1" class="placebutton btn btn-info">Statue of Liberty</button>
                         </div>
                         <div class="modal-footer">
                           <button id="jumpMap" type="button" class="btn btn-info">Jump</button>
                           <button id="closeJumpMap" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="zoomLevelSelect">
+                  <div class="modal fade">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Set Zoom Level</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>What zoom level doe you want to go to?</p>
+                          <select name="mapZoomLevel"></select>
+                        </div>
+                        <div class="modal-footer">
+                          <button id="zoomMap" type="button" class="btn btn-info">Zoom</button>
+                          <button id="closeZoomMap" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                       </div>
                     </div>
