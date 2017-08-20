@@ -1,15 +1,34 @@
 var map;
+var infowindow;
 var mapPoints = [
   {"Name":"London", "Lat": 51.5, "Lng":-0.11},
   {"Name": "Statue Of Liberty", "Lat": 40.6891, "Lng":-74.0445}, 
   {"Name":"Manhattan","Lat":40.7257,"Lng":-74.0047},
-  {"Name": "New York", "Lat": 40.727093,"Lng":-73.97864},
+  {"Name": "New York", "Lat": 40.756,"Lng":-73.986},
   {"Name": "Los Angeles", "Lat":34.088808, "Lng":-118.40612},
-  {"Name":"Miami", "Lat":25.767368, "Lng":-80.18930}
+  {"Name":"Miami", "Lat":25.767368, "Lng":-80.18930},
+  {"Name":"San Francisco", "Lat": 37.775,"Lng":-122.419},
+  {"Name":"Seattle", "Lat": 47.620,"Lng":-122.347},
+  {"Name":"Manchester", "Lat": 53.453093, "Lng":	-2.223126},
+  {"Name":"Birmingham","Lat": 52.5, "Lng": -1.866667},
+  {"Name":"Liverpool", "Lat": 53.386644, "Lng":	-2.91552},
+  {"Name":"Leeds", "Lat": 53.816421, "Lng":	-1.526491},
+  {"Name":"Cardiff", "Lat": 51.505196, "Lng":	-3.19628},
+  {"Name":"Belfast", "Lat": 54.583333, "Lng":	-5.916667},
+  {"Name":"Bristol", "Lat": 51.45, "Lng":	-2.6},
+  {"Name": "Edinburgh", "Lat": 55.933333, "Lng": -3.25},
+  {"Name": "Leicester", "Lat": 52.633333, "Lng":-1.133333},
+  {"Name": "Peterborough", "Lat": 52.583333, "Lng": -0.25},
+  {"Name":"Brighton", "Lat": -37.933333, "Lng": 144.983333},
+  {"Name": "Glasgow", "Lat": 55.866667, "Lng": -4.25},
+  {"Name": "Basildon", "Lat": 51.566667, "Lng": 0.466667},
+  {"Name": "Southend", "Lat": 51.533333, "Lng": 0.7},
+  {"Name": "Oxford", "Lat": 51.75, "Lng": -1.25},
+  {"Name": "cambridge", "Lat": -42.833333, "Lng": 147.45}
 ];
 var defaultMapOptions = {center: new google.maps.LatLng(mapPoints[0].Lat,mapPoints[0].Lng), zoom: 8};
 function initMap() {
-	var infowindow = new google.maps.InfoWindow();
+	infowindow = new google.maps.InfoWindow();
   var london = new google.maps.LatLng(mapPoints[0].Lat,mapPoints[0].Lng);
   var mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, defaultMapOptions);
@@ -22,12 +41,21 @@ function placeMarker(loc) {
       map      : map,
       title: loc.Name
     });
+    var infoContent = '<p>Marker for: '+loc.Name+'</p>';
+    addInfoWindow(marker, infoContent);
 }
 
 function placeAllMarkers() {
   for(var i = 0; i < mapPoints.length; i++) {
     placeMarker(mapPoints[i]);
   }
+}
+
+function addInfoWindow(marker, content) {
+	google.maps.event.addListener(marker, 'click', function(){
+    infowindow.setContent(content);
+    infowindow.open(map, marker);
+  });
 }
 
 function attachEvents() {
