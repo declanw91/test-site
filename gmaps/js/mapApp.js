@@ -55,15 +55,25 @@ function placeAllMarkers() {
 
 function addInfoWindow(marker, content) {
 	google.maps.event.addListener(marker, 'click', function(){
-    //var detailDiv = jQuery('<div/>').css('width','200px').css('height','200px');
+    jQuery('#detailedMap').remove();
+    var detailMapWrapper = document.createElement('div');
+    detailMapWrapper.id = 'detailMapWrapper';
     var detailDiv = document.createElement('div');
-    detailDiv.style.width = '200px';
-    detailDiv.style.height = '200px';
-    jQuery('#map').append(detailDiv);
+    detailDiv.id = 'detailedMap';
+    detailMapWrapper.appendChild(detailDiv);
+    jQuery('#map').append(detailMapWrapper);
     var overviewOptions = {zoom: 14, center: marker.getPosition(), mapTypeId: map.getMapTypeId(), disableDefaultUI: true};
     var detailMap = new google.maps.Map(detailDiv, overviewOptions);
     var detailMarker = new google.maps.Marker({position: marker.getPosition(), map: detailMap, clickable: false});
-    infowindow.setContent(detailDiv);
+    var zoomInLink = jQuery('<div/>').addClass('linkWrapper');
+    zoomInLink.append('<a href="#">Zoom in on large map</a>');
+    zoomInLink.click(function(event){
+      map.setCenter(marker.getPosition());
+      map.setZoom(14);
+      infowindow.close();
+    });
+    jQuery('#detailMapWrapper').append(zoomInLink);
+    infowindow.setContent(detailMapWrapper);
     infowindow.open(map, marker);
   });
 }

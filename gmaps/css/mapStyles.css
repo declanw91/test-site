@@ -12,3 +12,8 @@
 .toolbar {
   margin-bottom: 10px;
 }
+
+#detailedMap {
+  min-height: 200px;
+  min-width: 200px;
+}
