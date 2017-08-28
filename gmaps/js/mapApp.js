@@ -1,5 +1,6 @@
 var map;
 var infowindow;
+var bounds;
 var mapPoints = [
   {"Name":"London", "Lat": 51.5, "Lng":-0.11},
   {"Name": "Statue Of Liberty", "Lat": 40.6891, "Lng":-74.0445}, 
@@ -19,16 +20,15 @@ var mapPoints = [
   {"Name": "Edinburgh", "Lat": 55.933333, "Lng": -3.25},
   {"Name": "Leicester", "Lat": 52.633333, "Lng":-1.133333},
   {"Name": "Peterborough", "Lat": 52.583333, "Lng": -0.25},
-  {"Name":"Brighton", "Lat": -37.933333, "Lng": 144.983333},
   {"Name": "Glasgow", "Lat": 55.866667, "Lng": -4.25},
   {"Name": "Basildon", "Lat": 51.566667, "Lng": 0.466667},
   {"Name": "Southend", "Lat": 51.533333, "Lng": 0.7},
-  {"Name": "Oxford", "Lat": 51.75, "Lng": -1.25},
-  {"Name": "cambridge", "Lat": -42.833333, "Lng": 147.45}
+  {"Name": "Oxford", "Lat": 51.75, "Lng": -1.25}
 ];
 var defaultMapOptions = {center: new google.maps.LatLng(mapPoints[0].Lat,mapPoints[0].Lng), zoom: 8};
 function initMap() {
 	infowindow = new google.maps.InfoWindow();
+  bounds = new google.maps.LatLngBounds();
   var london = new google.maps.LatLng(mapPoints[0].Lat,mapPoints[0].Lng);
   var mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, defaultMapOptions);
@@ -41,8 +41,10 @@ function placeMarker(loc) {
       map      : map,
       title: loc.Name
     });
+    bounds.extend(latLng);
     var infoContent = '<p>Marker for: '+loc.Name+'</p>';
     addInfoWindow(marker, infoContent);
+    map.fitBounds(bounds);
 }
 
 function placeAllMarkers() {
@@ -53,7 +55,15 @@ function placeAllMarkers() {
 
 function addInfoWindow(marker, content) {
 	google.maps.event.addListener(marker, 'click', function(){
-    infowindow.setContent(content);
+    //var detailDiv = jQuery('<div/>').css('width','200px').css('height','200px');
+    var detailDiv = document.createElement('div');
+    detailDiv.style.width = '200px';
+    detailDiv.style.height = '200px';
+    jQuery('#map').append(detailDiv);
+    var overviewOptions = {zoom: 14, center: marker.getPosition(), mapTypeId: map.getMapTypeId(), disableDefaultUI: true};
+    var detailMap = new google.maps.Map(detailDiv, overviewOptions);
+    var detailMarker = new google.maps.Marker({position: marker.getPosition(), map: detailMap, clickable: false});
+    infowindow.setContent(detailDiv);
     infowindow.open(map, marker);
   });
 }
