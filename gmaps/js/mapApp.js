@@ -1,6 +1,7 @@
 var map;
 var infowindow;
 var bounds;
+var polyline;
 var mapPoints = [
   {"Name":"London", "Lat": 51.5, "Lng":-0.11},
   {"Name": "Statue Of Liberty", "Lat": 40.6891, "Lng":-74.0445}, 
@@ -32,6 +33,12 @@ function initMap() {
   var london = new google.maps.LatLng(mapPoints[0].Lat,mapPoints[0].Lng);
   var mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, defaultMapOptions);
+  google.maps.event.addListener(map, 'click', function(e){
+    if(polyline !== null && typeof polyline !== 'undefined') {
+      var path = polyline.getPath();
+      path.push(e.latLng);
+    }
+  });
 }
 
 function placeMarker(loc) {
@@ -78,6 +85,70 @@ function addInfoWindow(marker, content) {
   });
 }
 
+function drawLine() {
+  var route = new google.maps.MVCArray();
+  var polylineOptions = {path: route, strokeColor: '#FF0000', strokeOpacity: 0.5};
+  polyline = new google.maps.Polyline(polylineOptions);
+  polyline.setMap(map);
+}
+
+function drawShape() {
+  var points = [
+    new google.maps.LatLng(37.7671, -122.4206),
+    new google.maps.LatLng(36.1131, -115.1763),
+    new google.maps.LatLng(34.0485, -118.2568)
+  ];
+  var polygon = new google.maps.Polygon({
+    paths: points,
+    map: map,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
+  var outerPoints = [
+    new google.maps.LatLng(37.303, -81.256),
+    new google.maps.LatLng(37.303, -78.333),
+    new google.maps.LatLng(35.392, -78.333),
+    new google.maps.LatLng(35.392, -81.256)
+  ];
+  var innerPoints = [
+    new google.maps.LatLng(36.705, -80.459),
+    new google.maps.LatLng(36.705, -79),
+    new google.maps.LatLng(35.9, -79),
+    new google.maps.LatLng(35.9, -80.459)
+  ];
+  var donutPoints = [outerPoints, innerPoints];
+  var donut = new google.maps.Polygon({
+    paths: donutPoints,
+    map: map
+  });
+  var bermudaTrianglePoints = [
+    new google.maps.LatLng(25.7516, -80.1670),
+    new google.maps.LatLng(32.2553, -64.8493),
+    new google.maps.LatLng(18.4049, -66.0578)
+  ];
+  var bermudaTriangle = new google.maps.Polygon({
+    paths: bermudaTrianglePoints,
+    map: map,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 1,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
+  google.maps.event.addListener(bermudaTriangle, 'mouseover', function(){
+    bermudaTriangle.setOptions({
+      fillColor: '#0000FF',
+      strokeColor: '#0000FF'
+    });
+  });
+  google.maps.event.addListener(bermudaTriangle, 'mouseout', function(){
+    bermudaTriangle.setOptions({
+      fillColor: '#FF0000',
+      strokeColor: '#FF0000'
+    });
+  });
+}
+
 function attachEvents() {
   jQuery('#getMapValues').click(function(){
     var valueString = '';
@@ -115,6 +186,15 @@ function attachEvents() {
   });
   jQuery('#resetMap').click(function(){
     map.setOptions(defaultMapOptions);
+    if(polyline !== null && typeof polyline !== 'undefined') {
+      polyline.setMap(null);
+    }
+  });
+  jQuery('#drawLine').click(function(){
+    drawLine();
+  });
+  jQuery('#drawShape').click(function(){
+    drawShape();
   });
   jQuery('#loadMarkers').click(function(){
     placeAllMarkers();
