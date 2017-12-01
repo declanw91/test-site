@@ -4,13 +4,6 @@ var bounds;
 var polyline;
 var mapPoints = [
   {"Name":"London", "Lat": 51.5, "Lng":-0.11},
-  {"Name": "Statue Of Liberty", "Lat": 40.6891, "Lng":-74.0445}, 
-  {"Name":"Manhattan","Lat":40.7257,"Lng":-74.0047},
-  {"Name": "New York", "Lat": 40.756,"Lng":-73.986},
-  {"Name": "Los Angeles", "Lat":34.088808, "Lng":-118.40612},
-  {"Name":"Miami", "Lat":25.767368, "Lng":-80.18930},
-  {"Name":"San Francisco", "Lat": 37.775,"Lng":-122.419},
-  {"Name":"Seattle", "Lat": 47.620,"Lng":-122.347},
   {"Name":"Manchester", "Lat": 53.453093, "Lng":	-2.223126},
   {"Name":"Birmingham","Lat": 52.5, "Lng": -1.866667},
   {"Name":"Liverpool", "Lat": 53.386644, "Lng":	-2.91552},
@@ -39,6 +32,7 @@ function initMap() {
       path.push(e.latLng);
     }
   });
+  getMyLocation(map);
 }
 
 function placeMarker(loc) {
@@ -199,6 +193,21 @@ function attachEvents() {
   jQuery('#loadMarkers').click(function(){
     placeAllMarkers();
   });
+}
+
+function getMyLocation(mapObj){
+  if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+          var latLng = new google.maps.LatLng( position.coords.latitude, position.coords.longitude);
+          var marker = new google.maps.Marker({
+            position : latLng,
+            map      : mapObj,
+            title: "My Location"
+          });
+        });
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
 }
 
 jQuery('document').ready(function(){
