@@ -1,14 +1,14 @@
 userdisplay.controller('userdisplayctrl', function($scope, $http) {
   $scope.sortType = 'lastName';
   $scope.getUsers = function(){
-    var requestUrl = '/portfolio/usermanager/userModel.php?method=getUsers';
+    var requestUrl = 'userModel.php?method=getUsers';
     $http.get(requestUrl)
     .then(function (response) {
         $scope.userresults = response.data;
     });
   };
   $scope.findUser = function(data) {
-    var requestUrl = '/usermanager/userModel.php?method=find&userdata='+data;
+    var requestUrl = 'userModel.php?method=find&userdata='+data;
     $http.get(requestUrl)
     .then(function (response) {
         $scope.findresults = response.data;
@@ -29,7 +29,7 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
       }
     }
     jsonstring = jsonstring + '}';
-    var requestUrl = '/usermanager/userModel.php?method=delete&userdata='+jsonstring;
+    var requestUrl = 'userModel.php?method=delete&userdata='+jsonstring;
     $http.get(requestUrl)
     .then(function (response) {
         $scope.userresults = response.data;
@@ -38,7 +38,6 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
   };
   $scope.updateUser = function(index){
     jQuery('.userlistdisplay').hide();
-    jQuery('.updateuserarea').show();
     $scope.olduser = $scope.userresults[index];
     var oldjsonstring = '{';
     var length = Object.keys($scope.userresults[index]).length;
@@ -54,6 +53,7 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
     }
     oldjsonstring = oldjsonstring + '}';
     $scope.olduserstring = oldjsonstring;
+    jQuery('.updateuserarea').show();
   };
   $scope.getUsers();
 });

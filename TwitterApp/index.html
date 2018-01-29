@@ -45,6 +45,9 @@ and open the template in the editor.
                 <center><h3 class="twitter-header">My Tweets</h3></center>
                 <div class="tweet" data-ng-repeat="x in tweets">
                     {{x.text}} <a data-ng-if="x.urlattached != ''" href="{{x.urlattached}}">{{x.urlattached}}</a>
+                    <div data-ng-repeat="y in x.extended_entities.media">
+                      <img src="{{y.media_url}}" alt="{{y.media_url}}" width="500"/>
+                    </div>
                     <center>Posted on {{x.created_at}}</center>
                 </div>
             </div>
@@ -52,7 +55,7 @@ and open the template in the editor.
     <script type="text/javascript">
         var app = angular.module('myTweets', []);
         app.controller('myTweetController', function($scope, $http) {
-            $http.get("/TwitterApp/twitterData.php")
+            $http.get("twitterData.php")
             .then(function (response) {
                 var jsonstring = JSON.stringify(response.data);
                 jsonstring = jsonstring.replace(/\+0000\s2\d{2,}/g, "");

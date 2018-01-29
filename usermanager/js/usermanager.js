@@ -4,7 +4,7 @@ var femaleoptions = ["Miss", "Mrs"];
 jQuery('document').ready(function(){
   function saveData(data) {
     jQuery.ajax({
-      url: '/usermanager/userModel.php',
+      url: 'userModel.php',
       type: 'POST',
       data: {
         "method": "save",
@@ -14,6 +14,8 @@ jQuery('document').ready(function(){
         jQuery('.successMessageDisplay').html("User successfully added");
         jQuery('.successMessageWrapper').show();
         jQuery('.pageOverlay').show();
+        jQuery('.titleselect').val('');
+        jQuery('.formOption input').val('');
       }
     });
   }
@@ -150,7 +152,7 @@ jQuery('document').ready(function(){
     });
     jsonstring = jsonstring + '}';
     jQuery.ajax({
-      url: '/usermanager/userModel.php',
+      url: 'userModel.php',
       type: 'POST',
       data: {
         "method": "update",
@@ -162,7 +164,5 @@ jQuery('document').ready(function(){
         jQuery('.updateuserarea').hide();
       }
     });
-    console.log(angular.element('.mainpagewrapper').scope().olduserstring);
-    console.log(jsonstring);
   });
 });

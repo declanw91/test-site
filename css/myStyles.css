@@ -74,6 +74,11 @@ pre {
     color: #000000;
     background-color: #00cccc;
     width: 96%;
+    box-shadow: 5px 5px #000000;
+}
+
+.tweet img {
+  margin-left: 15%;
 }
 
 .tweet a {
