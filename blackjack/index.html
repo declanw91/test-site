@@ -2,8 +2,8 @@
 <html>
 <head>
   <!-- Bootstrap -->
-    <link href="/Blackjack/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/Blackjack/css/myStyles.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/myStyles.css" rel="stylesheet">
 
 </head>
 <body>
@@ -31,7 +31,7 @@
       <div class="starter-template">
         <h1>Welcome to Blackjack</h1>
         <div class="options">
-          <button onclick="setUpPlayer(); setUpDealer(); showCards(); jQuery(this).hide(); jQuery('.controls').show(); jQuery('#gamearea').show();">Start New Game</button>
+          <button id="startGame">Start New Game</button>
         </div>
         <div id="gamearea" style="display: none;">
         <div class="dealerarea">
@@ -51,145 +51,15 @@
           </div>
         </div>
           <div class="controls" style="display: none;">
-            <button onclick="playerDrawCard();" class="hitoption">Hit</button>
-            <button onclick="dealerDrawCard();" class="stickoption">Stick</button>
+            <button id="hit" class="hitoption">Hit</button>
+            <button id="stick" class="stickoption">Stick</button>
           </div>
         </div>
       </div>
 
     </div><!-- /.container -->
-<script src="/Blackjack/js/jquery-1.9.1.min.js"></script>
-<script src="/Blackjack/bootstrap/js/bootstrap.min.js"></script>
-<script>
-  var playercards = [];
-  var dealercards = [];
-  var drawnCards = [];
-  var playerTotal = 0;
-  var dealerTotal = 0;
-  function getRandomCard() {
-    var randomNumber = Math.floor((Math.random() * 13) + 1);
-    var allowedSuits = ["Hearts", "Clubs", "Spades", "Diamonds"];
-    var suitNumber = Math.floor((Math.random() * 3) + 1);
-    var suitName = allowedSuits[suitNumber];
-    if(randomNumber == 11) {
-      randomNumber = randomNumber + " Jack Of";
-    } else if (randomNumber == 12) {
-      randomNumber = randomNumber + " Queen Of";
-    } else if (randomNumber == 13) {
-      randomNumber = randomNumber + " King Of";
-    } else if (randomNumber == 1) {
-      randomNumber = randomNumber + " Ace Of";
-    }
-    return randomNumber + " " + suitName;
-  }
-  function setUpPlayer() {
-    playercards = [];
-    playerTotal = 0;
-    jQuery('.playercards').html("");
-    for(var i = 0; i < 2; i++){
-      var card = getRandomCard();
-      if(playercards.indexOf(card) == -1) {
-        playercards.push(card);
-
-      }
-    }
-  }
-
-  function setUpDealer() {
-    dealercards = [];
-    dealerTotal = 0;
-    jQuery('.dealercards').html();
-    for(var i = 0; i < 1; i++){
-      var dcard = getRandomCard();
-      if(dealercards.indexOf(dcard) == -1) {
-        dealercards.push(dcard);
-      }
-    }
-  }
-
-  function showCards() {
-    var regex = /^(.+?)\s.*?$/;
-    var html = "";
-    playerTotal = 0;
-    dealerTotal = 0;
-    for(var i = 0; i < playercards.length; i++) {
-      var arr = regex.exec(playercards[i]);
-      if(arr[1] > 10) {
-        playercards[i].replace(arr[1], "");
-      } else if (arr[1] == 1) {
-        playercards[i].replace(arr[1], "");
-      }
-      playerTotal += parseInt(arr[1]);
-      html = html + playercards[i]+ "<br>";
-    }
-    jQuery('.playercards').html(html);
-    var dealerhtml = "";
-    for(var i = 0; i < dealercards.length; i++) {
-      var arr2 = regex.exec(dealercards[i]);
-      if(arr2[1] > 10) {
-        dealercards[i].replace(arr2[1], "");
-      } else if (arr2[1] == 1) {
-        dealercards[i].replace(arr[1], "");
-      }
-      dealerhtml = dealerhtml + dealercards[i]+ "<br>";
-      dealerTotal += parseInt(arr2[1]);
-    }
-    jQuery('.dealercards').html(dealerhtml);
-    if (playerTotal == 21) {
-      alert("You Win!");
-      jQuery('.options button').show();
-      jQuery('.controls').hide();
-    } else if(playerTotal < 22) {
-        jQuery('.playertotal').html(playerTotal);
-    } else {
-      jQuery('.playertotal').html("You have busted with a total of: "+ playerTotal);
-      jQuery('.options button').show();
-      jQuery('.controls').hide();
-    }
-    if (dealerTotal == 21) {
-      alert("Dealer wins!");
-      jQuery('.options button').show();
-      jQuery('.controls').hide();
-    } else if(dealerTotal < 22) {
-        jQuery('.dealertotal').html(dealerTotal);
-    } else {
-      jQuery('.dealertotal').html("Dealer has busted with a total of: "+ dealerTotal);
-      alert("You Win!");
-      jQuery('.options button').show();
-      jQuery('.controls').hide();
-    }
-  }
-
-  function playerDrawCard() {
-    var card = getRandomCard();
-    if(playercards.indexOf(card) == -1) {
-      playercards.push(card);
-      showCards();
-    } else {
-      playerDrawCard();
-    }
-  }
-
-  function dealerDrawCard() {
-    var dcard = getRandomCard();
-    if(dealercards.indexOf(dcard) == -1) {
-      dealercards.push(dcard);
-      showCards();
-    } else {
-      dealerDrawCard();
-    }
-    if((dealerTotal < 22) && (dealerTotal <= playerTotal)) {
-      var delay=1000; //1 second
-      setTimeout(function() {
-        dealerDrawCard();
-      }, delay);
-    }
-    if((dealerTotal < 22) && (dealerTotal > playerTotal)) {
-      alert("Dealer Wins");
-      jQuery('.options button').show();
-      jQuery('.controls').hide();
-    }
-  }
-</script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/blackjack.js"></script>
 </body>
 </html>

@@ -13,3 +13,7 @@ body {
 .playerarea {
   float: right;
 }
+
+.controls {
+  clear: both;
+}
