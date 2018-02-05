@@ -91,8 +91,10 @@ function updateScore(user, cards) {
   var lowScore = scores.lowScore;
   if(lowScore === highScore) {
     htmlString = lowScore;
-  } else if (lowScore < highScore) {
+  } else if (lowScore < highScore && highScore < 21) {
     htmlString = lowScore + " or " + highScore;
+  } else if (lowScore < highScore && highScore > 21) {
+    htmlString = lowScore;
   }
   if(user === 'player') {
     jQuery('.playertotal').html(htmlString);
@@ -140,7 +142,7 @@ function playerSticks() {
   var playerScores = calculateScore(playerCards);
   var dealerScores = calculateScore(dealerCards);
   var delay = 1000; //1 second
-  if((dealerScores.lowScore <= playerScores.lowScore || dealerScores.highScore <= playerScores.highScore) && (dealerScores.lowScore < 21 && dealerScores.highScore < 21)) {
+  if((dealerScores.lowScore <= playerScores.lowScore || dealerScores.highScore <= playerScores.highScore) && (dealerScores.lowScore < 21 || dealerScores.highScore < 21)) {
     setTimeout(function() {
       drawCard("dealer");
       displayCards("dealer", dealerCards);
