@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
         <title>Declan's Blog</title>
         <link rel="stylesheet" type="text/css" href="blogStyle.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div id="loginForm">

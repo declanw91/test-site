@@ -75,7 +75,7 @@ function dealerDrawCard() {
 function displayCards(user, cards) {
   var htmlString = '';
   for(var i = 0; i < cards.length; i++) {
-    htmlString = htmlString + '<p class="cardWrapper">' + cards[i].name + ' of ' + cards[i].suit + '</p>'
+    htmlString = htmlString + '<img class="cardImage" src="images/' + cards[i].name + '_of_' + cards[i].suit + '.png"/>'
   }
   if(user === 'player') {
     jQuery('.playercards').html(htmlString);
