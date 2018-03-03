@@ -106,14 +106,14 @@ function updateScore(user, cards) {
     if(user === 'player') {
       alert("You are bust. Thanks for playing");
     } else if (user === 'dealer') {
-      alert("Dealer is bust. You win!. Thansk for playing");
+      alert("Dealer is bust. You win!. Thanks for playing!");
     }
     jQuery('.controls').hide();
   } else if (lowScore === 21 || highScore === 21) {
     if(user === 'player') {
-      alert("You have 21, you win! Thanks for playing");
+      alert("You have 21, you win! Thanks for playing!");
     } else if (user === 'dealer') {
-      alert("Dealer has 21, you lose. Thanks for playing");
+      alert("Dealer has 21, you lose. Thanks for playing!");
     }
     jQuery('.controls').hide();
   }
