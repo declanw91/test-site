@@ -1,1 +1,0 @@
-var userdisplay = angular.module('userdisplay', []);

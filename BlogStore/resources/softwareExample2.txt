@@ -1,5 +1,0 @@
-This is a hello world program for PHP.
-
-<?php
-	echo "Hello World.";
-?>
