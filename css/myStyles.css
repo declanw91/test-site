@@ -1,7 +1,70 @@
-#BlogPostsWrapper {
+body {
+  
+}
+
+main {
   margin-top: 65px;
 }
 
 .blogTitle {
   text-align: center;
+}
+
+.boxShadow {
+  box-shadow: 5px 5px #000000;
+  border-radius: 5px;
+}
+
+.tweetTitle {
+  text-align: center;
+}
+
+.tweet {
+  width: 75%;
+  margin: 0 auto;
+  background-color: #00cccc;
+  padding: 5px;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+.tweet img {
+  max-width: 100%;
+  margin-top: 5px;
+}
+
+.work {
+  background-color: #e0e0d1;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.blogPost {
+  background-color: #e0e0d1;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.workTitle {
+  text-align: center;
+}
+
+.movieResult {
+  margin-bottom: 10px;
+  background-color: #e0e0d1;
+}
+
+.movieResult img {
+  max-height: 210px;
+  margin: 5px;
+}
+
+.movieSearchIntro {
+  text-align: center;
+}
+
+#movieForm {
+  margin: 0 auto;
+  width: 34%;
 }

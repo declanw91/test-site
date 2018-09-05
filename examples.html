@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Declan Wright</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,13 +37,29 @@
     <main role="main" class="container">
 
       <div class="container-fluid">
-        
+        <h2 class="workTitle">My Work</h2>
+        <div id="twitterFeed" class="work row boxShadow">
+            <h3>Twitter Feed</h3>
+            <p>Been looking into different APIs and started to experiment
+                with them. This page uses the twitter API to fetch my tweets
+                and displays them on this website. I have recently updated this to use
+              angularJS. There is a PHP file that fetches the JSON data from the twitter API
+            and then uses angular to process this response and create the HTML displayed</p>
+            <p>Viewable here <a href="TwitterApp">Tweets</a></p>
+        </div>
+        <div id="angularMovieApp" class="work row boxShadow">
+            <h3>Movie Search App (Angular version)</h3>
+            <p>This is my first real angular project and it is a one page application
+              so there is no page reloading. It uses an API fom TheMovieDB on the back end
+            to make a request for data after the user types in their search and submits, the angular then processes the JSON response and then 
+            uses it to build HTML to show on the page.</p>
+            <p>Viewable here: <a href="AngularMovieSearch">Movie Search</a></p>
+        </div>
       </div>
 
     </main><!-- /.container -->
 
     <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    <script src="js/angular.min.js" type="text/javascript"></script>
   </body>
 </html>
