@@ -37,6 +37,9 @@
     <main role="main" class="container">
 
       <div id="BlogPostsWrapper" class="container-fluid" data-ng-app="myBlogs" data-ng-controller="myBlogController">
+        <div id="blogLoadingBar" class="progress">
+         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%"></div>
+        </div> 
         <div class="blogPost row" data-ng-repeat="x in blogPosts">
           <div class="blogTitle container">
             <h2>{{x.Title}}</h2>
