@@ -68,3 +68,19 @@ main {
   margin: 0 auto;
   width: 34%;
 }
+
+#wineStoreTitle {
+  text-align: center;
+}
+
+.wineResults {
+  display: none;
+}
+
+.selectionOption {
+  cursor: pointer;
+}
+
+.returnOption {
+  text-align: center;
+}
