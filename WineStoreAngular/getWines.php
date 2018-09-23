@@ -13,6 +13,7 @@ $totalWines = $stmt->rowCount();
 $i = 0;
 while ($row = $stmt->fetch()) {
     echo '{';
+    echo  '"Id": "' . $i . '",';
     echo  '"Name": "' . $row['name'] . '",';
     echo '"Colour": "' . $row['color'] . '", ';
     echo '"Price": "' . $row['price'] . '", ';

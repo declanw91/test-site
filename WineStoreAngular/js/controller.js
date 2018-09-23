@@ -8,34 +8,54 @@ app.controller('myWineStoreController', function($scope, $http) {
         $scope.regions = jsondata[1].Regions;
     });
     $scope.winesDisplayTemplateURL = 'wineResults.html';
+    $scope.showHeader = true;
+    $scope.showWineList = false;
+    $scope.userItems = [];
+    $scope.selectedItem = null;
     $scope.showAllWines = function(event){
       $scope.searchresults = $scope.wines;
-      $scope.togglePageHeader();
-      $scope.toggleWineList();
+      $scope.showHeader = false;
+      $scope.showWineList = true;
     };
     $scope.showColourWines = function(colour){
-      $scope.togglePageHeader();
+      $scope.resetFilters();
       $scope.colourFilter = colour;
       $scope.searchresults = $scope.wines;
-      jQuery('.wineResults').show();
+      $scope.showHeader = false;
+      $scope.showWineList = true;
     };
     $scope.showRegionWines = function(region){
-      $scope.togglePageHeader();
+      $scope.resetFilters();
       $scope.regionFilter = region;
       $scope.searchresults = $scope.wines;
-      jQuery('.wineResults').show();
-    };
-    $scope.togglePageHeader = function(){
-      jQuery('#pageHeader').toggle();
-    };
-    $scope.toggleWineList = function(){
-      jQuery('.wineResults').toggle();
+      $scope.showHeader = false;
+      $scope.showWineList = true;
     };
     $scope.orderByMe = function(x) {
       $scope.myOrderBy = x;
     };
     $scope.returnToSelections = function(){
-      $scope.togglePageHeader();
-      $scope.toggleWineList();
+      $scope.showHeader = true;
+      $scope.showWineList = false;
+    };
+    $scope.resetFilters = function(){
+      $scope.colourFilter = '';
+      $scope.regionFilter = '';
+    };
+    $scope.addToBasket = function(index){
+      $scope.selectedItem = $scope.searchresults.filter(function(item){return item.Id === index;})[0];
+    };
+    $scope.addToBasketWithQty = function(){
+      var qty = jQuery('#basketAddQty').val();
+      qty = Number(qty);
+      if(qty > 0){
+        var basketItem = JSON.stringify($scope.selectedItem);
+        basketItem = JSON.parse(basketItem);
+        basketItem.Qty = qty;
+        $scope.userItems.push(basketItem);
+        jQuery('#basketModal').modal("hide");
+      } else {
+        alert("The quantity must be greater than zero!");
+      }
     };
 });

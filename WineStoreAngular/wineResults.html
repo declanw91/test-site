@@ -4,8 +4,9 @@
       <th scope="col" data-ng-click="orderByMe('Name')">Name</th>
       <th scope="col" data-ng-click="orderByMe('Colour')">Colour</th>
       <th scope="col" data-ng-click="orderByMe('Region')">Region</th>
+      <th scope="col" data-ng-click="orderByMe('Year')">Year</th>
       <th scope="col" data-ng-click="orderByMe('Price')">Price</th>
-      <th scope="col" data-ng-click="orderByMe('Price')"> </th>
+      <th scope="col"> </th>
     </tr>
   </thead>
   <tbody>
@@ -13,8 +14,9 @@
       <td>{{x.Name}}</td>
       <td>{{x.Colour}}</td>
       <td>{{x.Region}}</td>
+      <td>{{x.Year}}</td>
       <td>&pound;{{x.Price}}</td>
-      <td><button id="addProduct{{$index}}" type="button" class="btn btn-info">Add to Basket</button></td>
+      <td><button id="addProduct{{$index}}" type="button" class="btn btn-info" data-ng-click="addToBasket(x.Id)" data-toggle="modal" data-target="#basketModal">Add to Basket</button></td>
     </tr>
   </tbody>
 </table>

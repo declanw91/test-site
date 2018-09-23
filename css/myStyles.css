@@ -73,14 +73,51 @@ main {
   text-align: center;
 }
 
-.wineResults {
-  display: none;
-}
-
 .selectionOption {
   cursor: pointer;
 }
 
 .returnOption {
   text-align: center;
+}
+
+#colourList, #regionList {
+  list-style: none;
+  clear: both;
+}
+
+#colourList li {
+  float: left;
+  width: 33%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#regionList li {
+  float: left;
+  width: 25%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#colourSelect, #regionSelect, #allSelect {
+  clear: both;
+  margin-bottom: 10px;
+  min-height: 70px;
+}
+
+#wineStoreBody {
+  background-image: url('../images/wineBackground.png');
+}
+
+#wineStoreContainer {
+  background: #FFFFFF;
+}
+
+#basketWrapper {
+  color: #FFFFFF;
+}
+
+#basketAddQty {
+  width: 50px;
 }

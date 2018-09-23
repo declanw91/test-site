@@ -14,10 +14,10 @@
     <link href="../css/myStyles.css" rel="stylesheet">
   </head>
 
-  <body data-ng-app="myWineStore" data-ng-controller="myWineStoreController">
+  <body id="wineStoreBody" data-ng-app="myWineStore" data-ng-controller="myWineStoreController">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="./">Shalom WInes</a>
+      <a class="navbar-brand" href="./">Shalom Wines</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -25,47 +25,78 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#" data-ng-click="returnToSelections();">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Red</a>
+            <a class="nav-link" href="#" data-ng-click="showColourWines('Red');">Red</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Wine</a>
+            <a class="nav-link" href="#" data-ng-click="showColourWines('White');">White</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Rose</a>
+            <a class="nav-link" href="#" data-ng-click="showColourWines('Rose');">Rose</a>
           </li>
         </ul>
       </div>
+      <div id="basketWrapper">
+        <span>{{userItems.length}} Item(s)</span>
+      </div>
     </nav>
 
-    <main role="main" class="container">
+    <main id="wineStoreContainer" role="main" class="container">
 
       <div class="container-fluid">
         <h1 id="wineStoreTitle">Shalom Wines</h1>
-        <div id="pageHeader">
+        <div id="pageHeader" data-ng-if="showHeader">
           <p>Welcome to Shalom Wines, your local wine store. We stock wines from different regions of the world ready for you order at competitive prices.</p>
-          <p>To get started choose from one of the colour options below:</p>
-          <ul id="colourList">
-            <li class="colourOption selectionOption" data-ng-click="showColourWines('Red');">Red</li>
-            <li class="colourOption selectionOption" data-ng-click="showColourWines('White');">White</li>
-            <li class="colourOption selectionOption" data-ng-click="showColourWines('Rose');">Rose</li>
-          </ul>
-          <p>If you don't want to shop by colour maybe you would liek to shop by region:</p>
-          <ul>
-            <li data-ng-repeat="x in regions">
-              <span class="selectionOption" data-ng-click="showRegionWines(x.Name);">{{x.Name}}</span>
-            </li>
-          </ul>
-          <p>If you just want to browse then you can use the link below to see our full collection:</p>
-          <ul id="allWineList">
-            <li class="allWineOption selectionOption" data-ng-click="showAllWines($event);">All Wines</li>
-          </ul>
+          <div id="colourSelect">
+            <p>To get started choose from one of the colour options below:</p>
+            <ul id="colourList">
+              <li class="colourOption selectionOption" data-ng-click="showColourWines('Red');">Red</li>
+              <li class="colourOption selectionOption" data-ng-click="showColourWines('White');">White</li>
+              <li class="colourOption selectionOption" data-ng-click="showColourWines('Rose');">Rose</li>
+            </ul>
+          </div>
+          <div id="regionSelect">
+            <p>If you don't want to shop by colour maybe you would like to shop by region:</p>
+            <ul id="regionList">
+              <li data-ng-repeat="x in regions">
+                <span class="selectionOption" data-ng-click="showRegionWines(x.Name);">{{x.Name}}</span>
+              </li>
+            </ul>
+          </div>
+          <div id="allSelect">
+            <p>If you just want to browse then you can use the link below to see our full collection:</p>
+            <ul id="allWineList">
+              <li class="allWineOption selectionOption" data-ng-click="showAllWines($event);">All Wines</li>
+            </ul>
+          </div>
         </div>
-        <div class="row wineResults" data-ng-include="winesDisplayTemplateURL"></div>
+        <div class="row wineResults" data-ng-include="winesDisplayTemplateURL" data-ng-if="showWineList"></div>
       </div>
+      
 
+      <div id="basketModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Adding {{selectedItem.Name}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Please enter a quantity to add to your basket: <input id="basketAddQty" type="text" name="addQty" value="1" />
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-ng-click="addToBasketWithQty()">Add</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main><!-- /.container -->
 
     <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
