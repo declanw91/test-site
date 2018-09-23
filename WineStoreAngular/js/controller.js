@@ -12,6 +12,7 @@ app.controller('myWineStoreController', function($scope, $http) {
     $scope.showWineList = false;
     $scope.userItems = [];
     $scope.selectedItem = null;
+    $scope.addQty = 1;
     $scope.showAllWines = function(event){
       $scope.searchresults = $scope.wines;
       $scope.showHeader = false;
@@ -44,14 +45,13 @@ app.controller('myWineStoreController', function($scope, $http) {
     };
     $scope.addToBasket = function(index){
       $scope.selectedItem = $scope.searchresults.filter(function(item){return item.Id === index;})[0];
+      $scope.addQty = 1;
     };
     $scope.addToBasketWithQty = function(){
-      var qty = jQuery('#basketAddQty').val();
-      qty = Number(qty);
-      if(qty > 0){
+      if($scope.addQty > 0){
         var basketItem = JSON.stringify($scope.selectedItem);
         basketItem = JSON.parse(basketItem);
-        basketItem.Qty = qty;
+        basketItem.Qty = $scope.addQty;
         $scope.userItems.push(basketItem);
         jQuery('#basketModal').modal("hide");
       } else {
