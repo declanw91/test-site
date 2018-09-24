@@ -11,6 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="../css/myStyles.css" rel="stylesheet">
   </head>
 
@@ -50,33 +51,43 @@
         <div id="pageHeader" data-ng-if="showHeader">
           <p>Welcome to Shalom Wines, your local wine store. We stock wines from different regions of the world ready for you order at competitive prices.</p>
           <div id="colourSelect">
-            <p>To get started choose from one of the colour options below:</p>
+            <h5>Shop by Colour</h5>
             <ul id="colourList">
-              <li class="colourOption selectionOption" data-ng-click="showColourWines('Red');">Red</li>
-              <li class="colourOption selectionOption" data-ng-click="showColourWines('White');">White</li>
-              <li class="colourOption selectionOption" data-ng-click="showColourWines('Rose');">Rose</li>
+              <li class="colourOption selectionOption" data-ng-click="showColourWines('Red');">
+                <img src="../images/redWine.png" alt="Red Wine" />
+                <div class="colourCaption" data-ng-click="showColourWines('Red');">Red</div>
+              </li>
+              <li class="colourOption selectionOption" data-ng-click="showColourWines('White');">
+                <img src="../images/whiteWine.png" alt="White Wine" />
+                <div class="colourCaption" data-ng-click="showColourWines('White');">White</div>
+              </li>
+              <li class="colourOption selectionOption" data-ng-click="showColourWines('Rose');">
+                <img src="../images/roseWine.png" alt="Rose Wine" />
+                <div class="colourCaption" data-ng-click="showColourWines('Rose');">Rose</div>
+              </li>
             </ul>
           </div>
           <div id="regionSelect">
-            <p>If you don't want to shop by colour maybe you would like to shop by region:</p>
+            <h5>Shop by Region</h5>
             <ul id="regionList">
-              <li data-ng-repeat="x in regions">
-                <span class="selectionOption" data-ng-click="showRegionWines(x.Name);">{{x.Name}}</span>
+              <li data-ng-repeat="x in regions" class="selectionOption">
+                <div class="regionImageWrapper">
+                  <img src="../images/{{x.Name}}.png" alt="{{x.Name}}" data-ng-click="showRegionWines(x.Name);"/>
+                </div>
+                <div class="regionCaption" data-ng-click="showRegionWines(x.Name);">{{x.Name}}</div>
               </li>
             </ul>
           </div>
           <div id="allSelect">
             <p>If you just want to browse then you can use the link below to see our full collection:</p>
-            <ul id="allWineList">
-              <li class="allWineOption selectionOption" data-ng-click="showAllWines($event);">All Wines</li>
-            </ul>
+            <p data-ng-click="showAllWines($event);">See the full collection</p>
           </div>
         </div>
         <div class="row wineResults" data-ng-include="winesDisplayTemplateURL" data-ng-if="showWineList"></div>
       </div>
       
 
-      <div id="basketModal" class="modal" tabindex="-1" role="dialog">
+      <div id="addToBasketModal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">

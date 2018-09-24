@@ -53,7 +53,7 @@ app.controller('myWineStoreController', function($scope, $http) {
         basketItem = JSON.parse(basketItem);
         basketItem.Qty = $scope.addQty;
         $scope.userItems.push(basketItem);
-        jQuery('#basketModal').modal("hide");
+        jQuery('#addToBasketModal').modal("hide");
       } else {
         alert("The quantity must be greater than zero!");
       }
