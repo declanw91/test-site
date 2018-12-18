@@ -124,10 +124,6 @@ main {
   min-height: 191px;
 }
 
-#regionSelect p, #colourSelect p {
-  
-}
-
 #regionSelect img {
   width: 95%;
 }
@@ -146,4 +142,52 @@ main {
 
 .centerText {
   text-align: center;
+}
+
+.dealerarea {
+  float: left;
+  width: 50%;
+}
+
+.playerarea {
+  float: right;
+  width: 50%;
+}
+
+.controls {
+  clear: both;
+}
+
+.cardImage {
+  width: 17%;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+}
+
+#BlackjackWrapper h1, .options, .controls {
+  text-align: center;
+}
+
+#BlackjackWrapper #gamearea {
+  float: left;
+  padding: 10px;
+  background: #FFFFFF;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) { 
+    .dealerarea {
+      float: none;
+      width: auto;
+    }
+    
+    .playerarea {
+      float: none;
+      width: auto;
+    }
 }
