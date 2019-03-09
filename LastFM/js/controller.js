@@ -33,4 +33,11 @@ app.controller('myLastFmController', function($scope, $http) {
         var jsondata = JSON.parse(jsonstring);
         $scope.topTracks = jsondata.TopTracks;
     });
+    $http.get("topArtists.php")
+    .then(function (response) {
+        var jsonstring = JSON.stringify(response.data);
+        jsonstring = jsonstring.replace(/\+0000\s2\d{2,}/g, "");
+        var jsondata = JSON.parse(jsonstring);
+        $scope.topArtists = jsondata.TopArtists;
+    });
 });
