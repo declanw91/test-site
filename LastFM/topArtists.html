@@ -1,6 +1,6 @@
 <div class="topArtistWrapper row" data-ng-repeat="x in topArtists">
     <div class="col-lg-2">
-        <img src="{{x.ArtistImage}}" alt="ArtistImage" />
+        <img src="{{x.ArtistImage}}" alt="ArtistImage" onerror="this.src='../images/404.png'" width="147"/>
     </div>
     <div class="col">
         <p>Name: {{x.ArtistName}}</p>

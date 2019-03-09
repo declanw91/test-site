@@ -1,6 +1,6 @@
 <div class="recentTrackWrapper row" data-ng-repeat="x in recentTracks">
     <div class="col-lg-2">
-        <img src="{{x.TrackImage}}" alt="TrackImage" />
+        <img src="{{x.TrackImage}}" alt="TrackImage" onerror="this.src='../images/404.png'" width="147"/>
     </div>
     <div class="col">
         <p>Name: {{x.TrackName}}</p>

@@ -183,6 +183,17 @@ main {
   margin-top: 10px;
 }
 
+.recentTrackWrapper, .topAlbumWrapper, .topTrackWrapper, .topArtistWrapper {
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#LastFmReultsWrapper {
+  padding: 5px;
+}
+
 @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 667px) { 
