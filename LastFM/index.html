@@ -54,16 +54,19 @@
           <div id="LastFmDropdownWrapper">
             <center>
                 <p>Use the drop down list to select what results are displayed.</p>
-                <select id="selectChart">
-                    <option selected="selected">Recent Tracks</option>
-                    <option>Top Albums</option>
-                    <option>Top Artists</option>
-                    <option>Top Tracks</option>
+                <select id="selectChart" data-ng-change="updateResults()" data-ng-model="item">
+                    <option value="1" selected="selected">Recent Tracks</option>
+                    <option value="2">Top Albums</option>
+                    <option value="3">Top Artists</option>
+                    <option value="4">Top Tracks</option>
                 </select>
             </center>
           </div>
           <div id="LastFmReultsWrapper">
-            
+            <div id="recentTracksContainer" data-ng-include="recentTracksTemplateUrl" data-ng-if="showRecentTracks"></div>
+            <div id="topAlbumsContainer" data-ng-include="topAlbumsTemplateUrl" data-ng-if="showTopAlbums"></div>
+            <div id="topArtistsContainer" data-ng-include="topArtistsTemplateUrl" data-ng-if="showTopArtists"></div>
+            <div id="topTracksContainer" data-ng-include="topTracksTemplateUrl" data-ng-if="showTopTracks"></div>
           </div>
       </div>
 

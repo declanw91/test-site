@@ -1,4 +1,12 @@
 app.controller('myLastFmController', function($scope, $http) {
+    $scope.showTopArtists = false;
+    $scope.showTopTracks = false;
+    $scope.showTopAlbums = false;
+    $scope.showRecentTracks = false;
+    $scope.recentTracksTemplateUrl = 'recentTracks.html';
+    $scope.topAlbumsTemplateUrl = 'topAlbums.html';
+    $scope.topTracksTemplateUrl = 'topTracks.html';
+    $scope.topArtistsTemplateUrl = 'topArtists.html';
     $http.get("userInfo.php")
     .then(function (response) {
         var jsonstring = JSON.stringify(response.data);
@@ -40,4 +48,22 @@ app.controller('myLastFmController', function($scope, $http) {
         var jsondata = JSON.parse(jsonstring);
         $scope.topArtists = jsondata.TopArtists;
     });
+    $scope.resetView = function(){
+        $scope.showTopArtists = false;
+        $scope.showTopTracks = false;
+        $scope.showTopAlbums = false;
+        $scope.showRecentTracks = false;
+    };
+    $scope.updateResults = function(){
+        $scope.resetView();
+        if($scope.item == 1){
+            $scope.showRecentTracks = true;
+        } else if ($scope.item == 2) {
+            $scope.showTopAlbums = true;
+        } else if ($scope.item == 3) {
+            $scope.showTopArtists = true;
+        } else if ($scope.item == 4) {
+            $scope.showTopTracks = true;
+        }
+    }
 });
