@@ -171,7 +171,7 @@ main {
   padding: 5px;
 }
 
-#BlackjackWrapper h1, .options, .controls {
+#BlackjackWrapper h1, .options, .controls, #lastFmProfileTitle {
   text-align: center;
 }
 
