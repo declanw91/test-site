@@ -12,4 +12,25 @@ app.controller('myLastFmController', function($scope, $http) {
         $scope.PlayCount = jsondata.PlayCount;
         $scope.ProfileUrl = jsondata.ProfileUrl;
     });
+    $http.get("recentTracks.php")
+    .then(function (response) {
+        var jsonstring = JSON.stringify(response.data);
+        jsonstring = jsonstring.replace(/\+0000\s2\d{2,}/g, "");
+        var jsondata = JSON.parse(jsonstring);
+        $scope.recentTracks = jsondata.RecentTracks;
+    });
+    $http.get("topAlbums.php")
+    .then(function (response) {
+        var jsonstring = JSON.stringify(response.data);
+        jsonstring = jsonstring.replace(/\+0000\s2\d{2,}/g, "");
+        var jsondata = JSON.parse(jsonstring);
+        $scope.topAlbums = jsondata.TopAlbums;
+    });
+    $http.get("topTracks.php")
+    .then(function (response) {
+        var jsonstring = JSON.stringify(response.data);
+        jsonstring = jsonstring.replace(/\+0000\s2\d{2,}/g, "");
+        var jsondata = JSON.parse(jsonstring);
+        $scope.topTracks = jsondata.TopTracks;
+    });
 });
