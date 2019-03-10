@@ -40,13 +40,13 @@ main {
 }
 
 .work {
-  background-color: #e0e0d1;
+  background-color: #FFFFFF;
   padding: 5px;
   margin-bottom: 10px;
 }
 
 .blogPost {
-  background-color: #e0e0d1;
+  background-color: #FFFFFF;
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -58,7 +58,7 @@ main {
 
 .movieResult {
   margin-bottom: 10px;
-  background-color: #e0e0d1;
+  background-color: #FFFFFF;
 }
 
 .movieResult img {
