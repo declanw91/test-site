@@ -69,6 +69,12 @@
 
     <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="../js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="../js/mustache.min.js" type="text/javascript"></script>
     <script src="js/blackjack.js" type="text/javascript"></script>
+    <script id="cardTemplate" type="x-tmpl-mustache">
+      {{#.}}
+        <img class="cardImage boxShadow" src="images/{{name}}_of_{{suit}}.png"/>
+      {{/.}}
+    </script>
   </body>
 </html>

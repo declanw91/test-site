@@ -78,13 +78,13 @@ function dealerDrawCard() {
 
 function displayCards(user, cards) {
   var htmlString = '';
-  for(var i = 0; i < cards.length; i++) {
-    htmlString = htmlString + '<img class="cardImage boxShadow" src="images/' + cards[i].name + '_of_' + cards[i].suit + '.png"/>'
-  }
+  var template = jQuery('#cardTemplate').html();
+  Mustache.parse(template);
+  var rendered = Mustache.render(template, cards);
   if(user === 'player') {
-    jQuery('.playercards').html(htmlString);
+    jQuery('.playercards').html(rendered);
   } else if (user === 'dealer') {
-    jQuery('.dealercards').html(htmlString);
+    jQuery('.dealercards').html(rendered);
   }
 }
 
