@@ -189,3 +189,7 @@ main {
       width: auto;
     }
 }
+
+#LastFmProfileWrapper {
+  background: #FFFFFF;
+}
