@@ -38,29 +38,35 @@
 
       <div id="BlackjackWrapper" class="container-fluid">
         <h1>Welcome to Blackjack</h1>
-        <div class="options">
+        <div class="col-12 text-center">
           <button id="startGame">Start New Game</button>
         </div>
-        <div id="gamearea" style="display: none;">
-        <div class="dealerarea">
-         <h1>Dealers Current Cards:</h1>
-          <div class="dealercards"></div>
-          <div class="totalarea">
-            <h2>Dealer Total</h2>
-            <div class="dealertotal"></div>
+        <div id="gamearea" class="col-12 mt-2" style="display: none;">
+          <div class="row">
+            <div class="dealerarea col-6">
+              <h1>Dealers Current Cards:</h1>
+               <div class="dealercards"></div>
+               <div class="totalarea">
+                 <h2>Dealer Total</h2>
+                 <div class="dealertotal"></div>
+               </div>
+             </div>
+             <div class="playerarea col-6">
+               <h1>Your Current Cards:</h1>
+               <div class="playercards"></div>
+               <div class="totalarea">
+                 <h2>Player Total</h2>
+                 <div class="playertotal"></div>
+               </div>
+             </div>
           </div>
-        </div>
-        <div class="playerarea">
-          <h1>Your Current Cards:</h1>
-          <div class="playercards"></div>
-          <div class="totalarea">
-            <h2>Player Total</h2>
-            <div class="playertotal"></div>
-          </div>
-        </div>
-          <div class="controls" style="display: none;">
-            <button id="hit" class="hitoption">Hit</button>
-            <button id="stick" class="stickoption">Stick</button>
+          <div class="row pb-1 mt-1">
+              <div class="col-6 text-right">
+                  <button id="hit" type="button" class="btn hitoption">Hit</button>
+              </div>
+              <div class="col-6">
+                  <button id="stick" type="button" class="btn stickoption">Stick</button>
+              </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>Welding Courses</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/myStyles.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="../">Declan Wright</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../examples.html">Examples</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+
+      <div id="WeldingCourseWrapper" class="container-fluid">
+            <div id="header" style="background-color: #FFFFFF; padding-left: 5px; padding-right: 5px;">
+                    <h1> Welcome to the Module Selection Page</h1>
+                </div>
+                <div id="pageBody" style="background-color: #FFFFFF; padding-left: 5px; padding-right: 5px;">
+                    <p>
+                        Please use the page below to select the modules that you wish to study during this course.
+                        The page will update to reflect the choices you make.
+                    </p>
+                    <p>
+                        You will only be able to choose modules that are in the same area that you are interested in. <br/>
+                        Also if you have no welding experience you will be required to take the safety and intro modules.
+                    </p>
+                    <div id="userSelections">
+                        <h3>Please select the type of modules you are interested in:</h3>
+                        <select id="userMod">
+                            <option selected="selected" value=" "> </option>
+                            <option value="Any">Any</option>
+                            <option value="ARC">ARC </option>
+                            <option value="MIG">MIG</option>
+                            <option value="GAS">GAS</option>
+                        </select>
+                        <br/>
+                        <h3>Do you have any past welding experience </h3>
+                        <select id="userExp">
+                            <option selected="selected" value=" "> </option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <form action="enrole.php" method="POST">
+                        <table id="modules" border="3" class="table mt-2">
+                            <tr id="colHead"><td>Select</td><td>Code</td><td>Type</td><td>Level</td><td>Description</td></tr>
+                            <tr class="ARC Safe"><td><input type="checkbox" name="modOpt[]" value="AS"/></td><td>AS</td><td>ARC</td><td>Safety</td><td>Arc welding safety</td></tr>
+                            <tr class="ARC Intro"><td><input type="checkbox" name="modOpt[]" value="A1"/></td><td>A1</td><td>ARC</td><td>Intro</td><td>Bead control and simple but welds in mild steel</td></tr>
+                            <tr class="ARC Adv"><td><input type="checkbox" name="modOpt[]" value="A2"/></td><td>A2</td><td>ARC</td><td>Advanced</td><td>Vertical welding</td></tr>
+                            <tr class="ARC Adv"><td><input type="checkbox" name="modOpt[]" value="A3"/></td><td>A3</td><td>ARC</td><td>Advanced</td><td>Specialised electrodes</td></tr>
+                            <tr class="GAS Safe"><td><input type="checkbox" name="modOpt[]" value="GS"/></td><td>GS</td><td>Gas</td><td>Safety</td><td>The safe use of oxy-acetylene welding equipment</td></tr>
+                            <tr class="GAS Intro"><td><input type="checkbox" name="modOpt[]" value="G1"/></td><td>G1</td><td>Gas</td><td>Intro</td><td>Bead control and simple butt welds</td></tr>
+                            <tr class="GAS Adv"><td><input type="checkbox" name="modOpt[]" value="G2"/></td><td>G2</td><td>Gas</td><td>Advanced</td><td>Positional welds and weld testing</td></tr>
+                            <tr class="GAS Adv"><td><input type="checkbox" name="modOpt[]" value="G3"/></td><td>G3</td><td>Gas</td><td>Advanced</td><td>Gas welding of aluminium</td></tr>
+                            <tr class="MIG Safe"><td><input type="checkbox" name="modOpt[]" value="MS"/></td><td>MS</td><td>MIG</td><td>Safety</td><td>The safe use of MIG welding equipment</td></tr>
+                            <tr class="MIG Intro"><td><input type="checkbox" name="modOpt[]" value="M1"/></td><td>M1</td><td>MIG</td><td>Intro</td><td>Bead control and simple horizontal welds of mild steel</td></tr>
+                            <tr class="MIG Adv"><td><input type="checkbox" name="modOpt[]" value="M2"/></td><td>M2</td><td>MIG</td><td>Advanced</td><td>MIG auto-mobile body welding</td></tr>
+                            <tr class="MIG Adv"><td><input type="checkbox" name="modOpt[]" value="M3"/></td><td>M3</td><td>MIG</td><td>Advanced</td><td>MIG welding aluminium and stainless steel</td></tr>
+                        </table>
+                        <input type="reset" name="reset" value="Reset"/>
+                    </form>
+                    <p class="text-center"><a href="../examples.html">Back to Portfolio</a></p>
+                </div>
+      </div>
+
+    </main><!-- /.container -->
+
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script>
+            jQuery(document).ready(initialise); //Initial set up, ensures table isn't displayed before selections are made
+
+            //Initialises the page by assigning event handlers to items and hides the module table initially
+            function initialise()
+            {
+                jQuery('select').change(updateModList);
+                jQuery('input:checkbox').change(checkSelections);
+                jQuery('input[type=reset]').click(function() {jQuery('input:disabled').removeAttr('disabled'); jQuery('input[type=submit]').remove(); updateModList();});
+                jQuery('input[type=reset]').css('margin-top', '10px');
+                jQuery('#modules').hide();
+            }
+
+            //Updates the table of modules based on what the user selects and ensures incorrect combinations can not be selected
+            function updateModList()
+            {
+                jQuery('input:checked').removeAttr('checked');
+                jQuery('input:disabled').removeAttr('disabled');
+                jQuery('input[type=submit]').remove();
+                var modList = document.getElementById('userMod');
+                var selectedM = modList.options[modList.selectedIndex].value;
+                var expList = document.getElementById('userExp');
+                var selectedE = expList.options[expList.selectedIndex].value;
+
+                if((selectedM == " ") || (selectedE == " ")) //If both options are blank
+                {
+                    jQuery('#modules').hide();
+                }
+                else if ((selectedM != "Any") && (selectedE == "Yes")) //If an area has been selected and has experience
+                {
+                    jQuery('#modules').show();
+                    jQuery('tr').hide();
+                    jQuery('tr.'+selectedM).show();
+                }
+                else if((selectedM == "Any") && (selectedE == "Yes")) //If any area and has experience
+                {
+                    jQuery('#modules').show();
+                    jQuery('tr').show();
+                }
+                else if((selectedM != "Any") && (selectedE == "No")) //If an area has been selected but no experience
+                {
+                    jQuery('#modules').show();
+                    jQuery('tr').hide();
+                    jQuery('tr.'+selectedM+'.Safe').show();
+                }
+                else if ((selectedM == "Any") && (selectedE == "No")) //If any area but no experience
+                {
+                    jQuery('#modules').show();
+                    jQuery('tr').hide();
+                    jQuery('tr.Safe').show();
+                }
+                jQuery('#colHead').show();
+            }
+
+            //Checks and ensures that only 3 modules are chosen
+            function checkSelections()
+            {
+                var selections = jQuery('input:checked');
+
+                if(selections.length == 3) //If three modules have been chosen
+                {
+                    jQuery('input[type=checkbox]:not(:checked)').attr('disabled', 'disabled');
+                }
+                else
+                {
+                    jQuery('input:disabled').removeAttr('disabled');
+                    jQuery('input[type=submit]').remove();
+                    enforcePrerequisite(selections);
+                }
+            }
+
+            //Enforces the prerequisite rules on the modules
+            //@param sel The jQuery object containing all the selected checkboxes
+            function enforcePrerequisite(sel)
+            {
+                var t = document.getElementById('userMod');
+                var st = t.options[t.selectedIndex].value;
+                var e = document.getElementById('userExp');
+                var se = e.options[e.selectedIndex].value;
+
+                if(se == "Yes") //If yes is selected prerequisites aren't needed
+                {
+                    return;
+                }
+                else if(sel.length == 0 && st == "Any") //If no selections are made and any type is selected
+                {
+                    jQuery('tr').hide();
+                    jQuery('tr#colHead').show();
+                    jQuery('tr.Safe').show();
+                    return;
+                }
+                else if(sel.length == 0 && st != "Any") //If no selections are made and a specific type is selected
+                {
+                    jQuery('tr').hide();
+                    jQuery('tr#colHead').show();
+                    jQuery('tr.'+st+'.Safe').show();
+                    return;
+                }
+
+                var currentlySel = jQuery('td:contains('+sel[(sel.length-1)].value+')').parent().attr('class'); //The class of the most recently selected item
+                var type = currentlySel.split(' '); //The [type, class] of the most recently selected item
+
+                if(sel.length == 1 && type[1] == "Safe") //If only one safety module is selected
+                {
+                    jQuery('tr.Adv').hide();
+                    jQuery('tr.Intro').hide();
+                    jQuery('tr.'+type[0]+'.Intro').show();
+                }
+                else if(sel.length == 1 && type[1] != "Safe") //If a safety module is not selected
+                {
+                    jQuery('input:checked').removeAttr('checked');
+                    checkSelections();
+                }
+                else if(sel.length == 2) //If two modules have been selected
+                {
+                    var oldSel = jQuery('td:contains('+sel[0].value+')').parent().attr('class'); //The class of the previously selected item
+                    var oldType = oldSel.split(' '); //The [type, class] of the previously selected item
+                    if(oldType[0] == type[0] && oldType[1] == "Safe" && type[1] != "Adv") //If a safety and intro module have been selected
+                    {
+                        jQuery('tr.Intro:not(tr.'+type[0]+')').hide();
+                        jQuery('tr.'+type[0]+'.Adv').show();
+                    }
+                    else if(oldType[0] != type[0] && type[1] == "Safe") //If two safety modules have been selected
+                    {
+                        jQuery('tr.Adv').hide();
+                        jQuery('tr.Intro').hide();
+                        jQuery('tr.'+type[0]+'.Intro').show();
+                        jQuery('tr.'+oldType[0]+'.Intro').show();
+                    }
+                    else if(oldType[1] == "Adv") //If a advanced module has been selected without the relevant safety and intro modules
+                    {
+                        jQuery('input:checked[value='+sel[0].value+']').removeAttr('checked');
+                        checkSelections();
+                    }
+                    else if(type[1] == "Adv") //If a advanced module has been selected without the relevant safety and intro modules
+                    {
+                        jQuery('input:checked[value='+sel[1].value+']').removeAttr('checked');
+                        checkSelections();
+                    }
+                    else
+                    {
+                        jQuery('input:checked[value='+sel[1].value+']').removeAttr('checked');
+                        checkSelections();
+                    }
+                }
+            }
+        </script>
+  </body>
+</html>

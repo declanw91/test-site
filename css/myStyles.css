@@ -149,20 +149,6 @@ main {
   text-align: center;
 }
 
-.dealerarea {
-  float: left;
-  width: 50%;
-}
-
-.playerarea {
-  float: right;
-  width: 50%;
-}
-
-.controls {
-  clear: both;
-}
-
 .cardImage {
   width: 17%;
   border: 1px solid #000000;
@@ -171,16 +157,12 @@ main {
   padding: 5px;
 }
 
-#BlackjackWrapper h1, .options, .controls, #lastFmProfileTitle {
+#BlackjackWrapper h1, .options, #lastFmProfileTitle {
   text-align: center;
 }
 
 #BlackjackWrapper #gamearea {
-  float: left;
-  padding: 10px;
   background: #FFFFFF;
-  text-align: center;
-  margin-top: 10px;
 }
 
 .recentTrackWrapper, .topAlbumWrapper, .topTrackWrapper, .topArtistWrapper {
