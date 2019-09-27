@@ -111,22 +111,23 @@ function updateScore(user, cards) {
 
 function checkForWinner(){
     if (playerScore.lowScore > 21 && playerScore.highScore > 21){
-        jQuery('.controls').hide();
-        alert("You are bust. Thanks for playing");
+      DisableControls();
+      alert("You are bust. Thanks for playing");
     } else if (playerScore.lowScore === 21 || playerScore.highScore === 21) {
-        alert("You have 21, you win! Thanks for playing!");
-        jQuery('.controls').hide();
+      alert("You have 21, you win! Thanks for playing!");
+      DisableControls();
     } else if (dealerScore.lowScore > 21 && dealerScore.highScore > 21){
-        jQuery('.controls').hide();
-        alert("Dealer is bust, you win! Thanks for playing");
+      DisableControls();
+      alert("Dealer is bust, you win! Thanks for playing");
     } else if (dealerScore.lowScore === 21 || dealerScore.highScore === 21) {
-        alert("Dealer has 21, you lose! Thanks for playing!");
-        jQuery('.controls').hide();
+      alert("Dealer has 21, you lose! Thanks for playing!");
+      DisableControls();
     }
 }
 
 function startGame() {
   resetTheDecks();
+  jQuery('#hit, #stick').removeAttr('disabled');
   for(var i =0; i< playerStartCardCount; i++){
     drawCard("player");
   }
@@ -137,7 +138,6 @@ function startGame() {
   displayCards("dealer", dealerCards);
   updateScore("player", playerCards);
   updateScore("dealer", dealerCards);
-  jQuery('.controls').show();
   jQuery('#gamearea').show();
   checkForWinner();
 }
@@ -150,6 +150,7 @@ function playerHits() {
 }
 
 function playerSticks() {
+  DisableControls();
   var playerScores = calculateScore(playerCards);
   var dealerScores = calculateScore(dealerCards);
   var delay = 1000; //1 second
@@ -161,10 +162,14 @@ function playerSticks() {
       checkForWinner();
       playerSticks();
     }, delay);
-  } else if ((dealerScores.lowScore > playerScores.lowScore || dealerScores.highScore > playerScores.highScore) && (dealerScores.lowScore < 21 && dealerScores.highScore < 21)) {
-    jQuery('.controls').hide();
+  } 
+  if ((dealerScores.lowScore > playerScores.lowScore || dealerScores.highScore > playerScores.highScore) && (dealerScores.lowScore < 21 && dealerScores.highScore < 21)) {
     alert("Dealer has higher hand, you lose. Thanks for playing.");
   }
+}
+
+function DisableControls() {
+  jQuery('#hit, #stick').attr('disabled', 'true');
 }
 
 jQuery('document').ready(function(){
