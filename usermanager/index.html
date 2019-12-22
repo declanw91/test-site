@@ -87,7 +87,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="userDetailsForm">
+                <form id="userDetailsForm" name="userDetailsForm">
                   <div class="form-group">
                     <label for="userTitle">Title</label>
                     <select class="form-control" id="userTitle" data-ng-model="currentUser.title">
@@ -101,24 +101,24 @@
                   </div>
                   <div class="form-group">
                     <label for="userFirstName">First Name</label>
-                    <input type="text" class="form-control" id="userFirstName"  placeholder="Enter first name" data-ng-model="currentUser.firstName"/>
+                    <input type="text" class="form-control" id="userFirstName" name="userFirstName" placeholder="Enter first name" data-ng-model="currentUser.firstName"/>
                   </div>
                   <div class="form-group">
                     <label for="userLastName">Last Name</label>
-                    <input type="text" class="form-control" id="userLastName"  placeholder="Enter last name" data-ng-model="currentUser.lastName"/>
+                    <input type="text" class="form-control" id="userLastName" name="userLastName" placeholder="Enter last name" data-ng-model="currentUser.lastName"/>
                   </div>
                   <div class="form-group">
                     <label for="userDateOfBirth">Date of Birth</label>
-                    <input id="userDateOfBirth" type="text" class="form-control datetimepicker-input" data-target="#userDateOfBirth" data-ng-model="currentUser.dateOfBirth" data-toggle="datetimepicker"/>
+                    <input id="userDateOfBirth" type="text" name="userDateOfBirth" class="form-control datetimepicker-input" data-target="#userDateOfBirth" data-ng-model="currentUser.dateOfBirth" data-toggle="datetimepicker"/>
                   </div>
                   <div class="form-group">
                     <label for="userEmail">Email address</label>
-                    <input type="email" class="form-control" id="userEmail" placeholder="Enter email" data-ng-model="currentUser.email"/>
+                    <input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Enter email" data-ng-model="currentUser.email"/>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
                   <div class="form-group">
                     <label for="userUserName">User Name</label>
-                    <input type="text" class="form-control" id="userUserName" placeholder="Enter username" data-ng-model="currentUser.userName"/>
+                    <input type="text" class="form-control" id="userUserName" name="userUserName" placeholder="Enter username" data-ng-model="currentUser.userName"/>
                     <small id="emailHelp" class="form-text text-muted">User names can only contain letters, numbers, hyphens andunderscores. Any other character is not allowed.</small>
                   </div>
                 </form>
