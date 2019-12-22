@@ -1,165 +1,144 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/myStyles.css" rel="stylesheet">
-</head>
-<body id="usermanagerBody">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>User Manager</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+    <link href="../css/myStyles.css" rel="stylesheet">
+  </head>
+
+  <body>
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="../">Declan Wright</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="./">Home</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Examples</a>
-            </li>
-          </ul>
+      <a class="navbar-brand" href="./">Declan Wright</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../examples.html">Examples</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container"  data-ng-app="userdisplay" data-ng-controller="userdisplayctrl">
+
+      <div class="container-fluid">
+        <div id="pageHeader" class="col-12">
+          <h2 class="text-center">User Manger</h2>
         </div>
-      </nav>
-      <main id="wineStoreContainer" role="main" class="container">
-          <div class="container-fluid">
-              <div data-ng-app="userdisplay" data-ng-controller="userdisplayctrl">
-                  <div class="innerpagewrapper">
-                    <ul class="nav nav-tabs">
-                      <li class="active"><a data-toggle="tab" href="#userlist">User List</a></li>
-                      <li><a data-toggle="tab" href="#adduser">Add User</a></li>
-                      <li><a data-toggle="tab" href="#finduser">Find User</a></li>
-                    </ul>
-              
-                    <div class="tab-content">
-                      <div id="userlist" class="tab-pane fade in active">
-                        <div class="userlistdisplay">
-                          <table class="usertable table table-striped">
-                            <tbody>
-                              <tr class="tableheaders">
-                                <th class="usertitle">Title</th>
-                                <th class="userfirstName">First Name</th>
-                                <th class="userlastName">Last Name</th>
-                                <th class="userdateOfBirth">Date of Birth</th>
-                                <th class="usergender">Gender</th>
-                                <th class="userName">Username</th>
-                                <th class="deleteButton"></th>
-                              </tr>
-                              <tr data-user-index="$index" class="userrow" data-ng-repeat="x in userresults track by $index" data-ng-if="x.userName">
-                                <td>{{x.title}}</td>
-                                <td>{{x.firstName}}</td>
-                                <td>{{x.lastName}}</td>
-                                <td>{{x.dateOfBirth | date :  "dd/MM/yyyy"}}</td>
-                                <td>{{x.gender}}</td>
-                                <td>{{x.userName}}</td>
-                                <td><button class="deleteUser" data-ng-click="deleteUser($index)">Delete</button><button class="updateUser" data-ng-click="updateUser($index)">Update</button></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="updateuserarea">
-                          <form class="updatesubmit">
-                            <div class="formOption">
-                              <span>Title: </span>
-                              <select class="titleselect" name="title">
-                                <option value="{{olduser.title}}">{{olduser.title}}</option>
-                                <option value="Mr">Mr</option>
-                                <option value="Mrs">Mrs</option>
-                                <option value="Miss">Miss</option>
-                                <option value="Dr">Dr</option>
-                              </select>
-                            </div>
-                            <div class="formOption">
-                              <span>First name: </span><input type="text" name="firstName" value="{{olduser.firstName}}"/>
-                            </div>
-                            <div class="formOption">
-                              <span>Middle initial: </span><input type="text" name="middleIntial" size="1" value="{{olduser.middleInital}}"/>
-                            </div>
-                            <div class="formOption">
-                              <span>Last name: </span><input type="text" name="lastName" value="{{olduser.lastName}}"/>
-                            </div>
-                            <div class="formOption">
-                              <span>User name: </span><input type="text" name="userName" value="{{olduser.userName}}"/>
-                            </div>
-                            <div class="formOption">
-                              <span>Date of Birth: </span><input type="text" name="dateOfBirth" placeholder="yyyy-MM-dd" value="{{olduser.dateOfBirth}}"/>
-                            </div>
-                            <input type="hidden" name="gender" value="{{olduser.gender}}"/>
-                            <input type="submit" name="usersubmit" value="Submit Details"/>
-                          </form>
-                        </div>
-                      </div>
-                      <div id="adduser" class="tab-pane fade">
-                        <form class="detailsubmit">
-                          <div class="formOption">
-                            <span>Title: </span>
-                            <select class="titleselect" name="title">
-                              <option value=""></option>
-                              <option value="Mr">Mr</option>
-                              <option value="Mrs">Mrs</option>
-                              <option value="Miss">Miss</option>
-                              <option value="Dr">Dr</option>
-                            </select>
-                          </div>
-                          <div class="formOption">
-                            <span>First name: </span><input type="text" name="firstName" value=""/>
-                          </div>
-                          <div class="formOption">
-                            <span>Middle initial: </span><input type="text" name="middleIntial" size="1" value=""/>
-                          </div>
-                          <div class="formOption">
-                            <span>Last name: </span><input type="text" name="lastName" value=""/>
-                          </div>
-                          <div class="formOption">
-                            <span>User name: </span><input type="text" name="userName" value=""/>
-                          </div>
-                          <div class="formOption">
-                            <span>Date of Birth: </span><input type="text" name="dateOfBirth" placeholder="yyyy-MM-dd" value=""/>
-                          </div>
-                          <input type="hidden" name="gender"/>
-                          <input type="submit" name="usersubmit" value="Submit Details"/>
-                        </form>
-                      </div>
-                      <div id="finduser" class="tab-pane fade">
-                        <div class="searchContextSelection">
-                          <form class="findUserForm">
-                            <span>Search for user by: </span>
-                            <select name="searchContext" class="searchContextSelect">
-                              <option value=""></option>
-                              <option value="name">Full name</option>
-                              <option value="userName">User Name</option>
-                            </select>
-                            <div class="searchFormOption name">
-                              <span>First name: </span><input type="text" name="firstName" value=""/>
-                            </div>
-                            <div class="searchFormOption name">
-                              <span>Last name: </span><input type="text" name="lastName" value=""/>
-                            </div>
-                            <div class="searchFormOption username">
-                              <span>User name: </span><input type="text" name="userName" value=""/>
-                            </div>
-                            <input type="submit" name="searchsubmit" value="Submit Search"/>
-                          </form>
-                          <div data-ng-include="templateUrl"></div>
-                        </div>
-                      </div>
-                    </div>
+        <div id="userManagerActions" class="col-12 mb-1 text-right">
+          <button id="addUser" class="addUser" data-ng-click="addUser()">Add User</button>
+        </div>
+        <div id="userListDisplay">
+          <table class="table table-striped">
+            <thead>
+              <tr class="tableheaders">
+                <th scope="col" class="userTitle">Title</th>
+                <th scope="col" class="userfirstName">First Name</th>
+                <th scope="col" class="userlastName">Last Name</th>
+                <th scope="col" class="userDateOfBirth">Date of Birth</th>
+                <th scope="col" class="userGender">Gender</th>
+                <th scope="col" class="userName">Username</th>
+                <th scope="col" class="email">Email</th>
+                <th scope="col" class="actionButtons"> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-user-index="$index" data-ng-repeat="x in userResults track by $index">
+                <td>{{x.title}}</td>
+                <td>{{x.firstName}}</td>
+                <td>{{x.lastName}}</td>
+                <td>{{x.dateOfBirth | date :  "dd/MM/yyyy"}}</td>
+                <td>{{x.gender}}</td>
+                <td>{{x.userName}}</td>
+                <td>{{x.email}}</td>
+                <td>
+                  <button class="deleteUser" data-ng-click="deleteUser($index)">Delete</button>
+                  <button class="updateUser" data-ng-click="updateUser($index)">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="userDetailModal">
+        <div class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">User Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="userDetailsForm">
+                  <div class="form-group">
+                    <label for="userTitle">Title</label>
+                    <select class="form-control" id="userTitle" data-ng-model="currentUser.title">
+                      <option value=""></option>
+                      <option value="Mr">Mr</option>
+                      <option value="Mrs">Mrs</option>
+                      <option value="Miss">Miss</option>
+                      <option value="Ms">Ms</option>
+                      <option value="Dr">Dr</option>
+                    </select>
                   </div>
-                </div>
+                  <div class="form-group">
+                    <label for="userFirstName">First Name</label>
+                    <input type="text" class="form-control" id="userFirstName"  placeholder="Enter first name" data-ng-model="currentUser.firstName"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="userLastName">Last Name</label>
+                    <input type="text" class="form-control" id="userLastName"  placeholder="Enter last name" data-ng-model="currentUser.lastName"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="userDateOfBirth">Date of Birth</label>
+                    <input id="userDateOfBirth" type="text" class="form-control datetimepicker-input" data-target="#userDateOfBirth" data-ng-model="currentUser.dateOfBirth" data-toggle="datetimepicker"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="userEmail">Email address</label>
+                    <input type="email" class="form-control" id="userEmail" placeholder="Enter email" data-ng-model="currentUser.email"/>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="userUserName">User Name</label>
+                    <input type="text" class="form-control" id="userUserName" placeholder="Enter username" data-ng-model="currentUser.userName"/>
+                    <small id="emailHelp" class="form-text text-muted">User names can only contain letters, numbers, hyphens andunderscores. Any other character is not allowed.</small>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button id="userSave" type="button" class="btn btn-primary" data-ng-click="saveUser()">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
           </div>
-      </main>
-  <div class="pageOverlay"></div>
-  <div class="errorMessageWrapper"><span class="errorMessageDisplay">No errors detected</span><button class="errorclosebutton">Close</button></div>
-  <div class="successMessageWrapper"><span class="successMessageDisplay"></span><button class="successclosebutton">Close</button></div>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<script src="../js/bootstrap.bundle.min.js" type="text/javascript"></script>
-<script src="../js/angular.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/userapp.js"></script>
-<script type="text/javascript" src="js/usercontrollers.js"></script>
-<script type="text/javascript" src="js/usermanager.js"></script>
-</body>
+        </div>
+      </div>
+    </main><!-- /.container -->
+
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="../js/moment.min.js" type="text/javascript"></script>
+    <script src="../js/tempusdominus-bootstrap-4.min.js" type="text/javascript"></script>
+    <script src="../js/angular.min.js" type="text/javascript"></script>
+    <script src="js/userapp.js" type="text/javascript"></script>
+    <script src="js/usercontrollers.js" type="text/javascript"></script>
+  </body>
 </html>

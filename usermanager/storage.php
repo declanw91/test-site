@@ -8,13 +8,13 @@ interface iStorage
 
 class storage implements iStorage {
 
- private $filename = 'userdata.txt';
+ private $filename = 'userdata.json';
 
 public function getFile($mode) {
-  if ( !file_exists('userdata.txt') ) {
+  if ( !file_exists('userdata.json') ) {
       throw new Exception('File not found.');
   } else {
-    $file = fopen('userdata.txt', $mode);
+    $file = fopen('userdata.json', $mode);
     if(!$file) {
       throw new Exception('File failed to open');
     } else {
@@ -25,7 +25,7 @@ public function getFile($mode) {
 
   public function save($data) {
     $userfile = $this->getFile('r');
-    $contents = fread($userfile, filesize('userdata.txt'));
+    $contents = fread($userfile, filesize('userdata.json'));
     fclose($userfile);
     $userfile = $this->getFile('w');
     $pattern = '/\]/i';
@@ -38,7 +38,7 @@ public function getFile($mode) {
   }
   public function find($data) {
     $userfile = $this->getFile('r');
-    $contents = fread($userfile, filesize('userdata.txt'));
+    $contents = fread($userfile, filesize('userdata.json'));
     fclose($userfile);
     $jsonstring = json_decode($contents, true);
     $searchstring = json_decode($data, true);
@@ -62,7 +62,7 @@ public function getFile($mode) {
   
   public function delete($data) {
     $userfile = $this->getFile('r');
-    $contents = fread($userfile, filesize('userdata.txt'));
+    $contents = fread($userfile, filesize('userdata.json'));
     fclose($userfile);
     $contents = str_replace($data, '{}', $contents);
     $userfile = $this->getFile('w');
@@ -73,7 +73,7 @@ public function getFile($mode) {
   
   public function update($olddata, $data) {
     $userfile = $this->getFile('r');
-    $contents = fread($userfile, filesize('userdata.txt'));
+    $contents = fread($userfile, filesize('userdata.json'));
     fclose($userfile);
     $contents = str_replace($olddata, $data, $contents);
     $userfile = $this->getFile('w');
@@ -84,7 +84,7 @@ public function getFile($mode) {
   
   public function getUsers() {
     $userfile = $this->getFile('r');
-    $contents = fread($userfile, filesize('userdata.txt'));
+    $contents = fread($userfile, filesize('userdata.json'));
     fclose($userfile);
     echo $contents;
   }
