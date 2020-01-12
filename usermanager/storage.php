@@ -24,15 +24,8 @@ public function getFile($mode) {
 }
 
   public function save($data) {
-    $userfile = $this->getFile('r');
-    $contents = fread($userfile, filesize('userdata.json'));
-    fclose($userfile);
     $userfile = $this->getFile('w');
-    $pattern = '/\]/i';
-    $contents = preg_replace($pattern, '', $contents);
-    //$contents = str_replace("]","", $filestring);
-    $contents = $contents.','.$data.']';
-    //ftruncate($userfile, 0);
+    $contents = json_encode($data);
     fwrite($userfile, $contents);
     fclose($userfile);
   }
@@ -61,25 +54,11 @@ public function getFile($mode) {
   }
   
   public function delete($data) {
-    $userfile = $this->getFile('r');
-    $contents = fread($userfile, filesize('userdata.json'));
-    fclose($userfile);
-    $contents = str_replace($data, '{}', $contents);
-    $userfile = $this->getFile('w');
-    fwrite($userfile, $contents);
-    fclose($userfile);
-    $this->getUsers();
+    $this->save($data);
   }
   
   public function update($olddata, $data) {
-    $userfile = $this->getFile('r');
-    $contents = fread($userfile, filesize('userdata.json'));
-    fclose($userfile);
-    $contents = str_replace($olddata, $data, $contents);
-    $userfile = $this->getFile('w');
-    fwrite($userfile, $contents);
-    fclose($userfile);
-    $this->getUsers();
+    
   }
   
   public function getUsers() {

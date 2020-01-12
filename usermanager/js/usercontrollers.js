@@ -8,6 +8,8 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
   $scope.userDateOfBirthInvalid = false;
   $scope.userUserNameInvalid = false;
   $scope.showUserList = false;
+  $scope.saveAction = 'save';
+  $scope.oldUser = {};
   $scope.getUsers = function(){
     var requestUrl = 'userModel.php?method=getUsers';
     $http.get(requestUrl)
@@ -22,6 +24,13 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
   };
   $scope.deleteUser = function(index){
     $scope.userResults.splice(index, 1);
+    $scope.saveAction = 'delete';
+    var data = {userAction: $scope.saveAction, userData: $scope.userResults};
+      $http.post('userModel.php', JSON.stringify(data)).then(function(response){
+        jQuery('#userDetailModal .modal').modal('hide'); 
+      }, function(response){
+        console.log(response);
+      });
   };
   $scope.updateUser = function(index){
     $scope.currentUser = $scope.userResults[index];
@@ -30,6 +39,8 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
       format: 'L',
       defaultDate: $scope.currentUser.dateOfBirth,
     });
+    $scope.saveAction = 'update';
+    $scope.oldUser = JSON.parse(JSON.stringify($scope.currentUser));
     jQuery('#userDetailModal .modal').modal('show');
   };
   $scope.addUser = function() {
@@ -54,12 +65,20 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
         let index = $scope.currentUser.id;
         $scope.userResults[index] = $scope.currentUser;
       } else {
+        let index = $scope.userResults.length + 1;
+        $scope.currentUser.id = index;
         $scope.userResults.push($scope.currentUser);
       }
-      jQuery('#userDetailModal .modal').modal('hide'); 
-    } else {
-      
-    }
+      var data = {userAction: $scope.saveAction};
+      if($scope.saveAction === 'save' || $scope.saveAction === 'update') {
+        data.userData = $scope.userResults;
+      }
+      $http.post('userModel.php', JSON.stringify(data)).then(function(response){
+        jQuery('#userDetailModal .modal').modal('hide'); 
+      }, function(response){
+        console.log(response);
+      });
+    } 
   };
   $scope.validateUser = function(name,data) {
     if(name === "userName") {
