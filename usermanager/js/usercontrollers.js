@@ -7,11 +7,13 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
   $scope.userEmailInvalid = false;
   $scope.userDateOfBirthInvalid = false;
   $scope.userUserNameInvalid = false;
+  $scope.showUserList = false;
   $scope.getUsers = function(){
     var requestUrl = 'userModel.php?method=getUsers';
     $http.get(requestUrl)
     .then(function (response) {
         $scope.userResults = response.data;
+        $scope.showUserList = true;
     });
   };
   $scope.currentUser = {};
@@ -31,7 +33,7 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
     jQuery('#userDetailModal .modal').modal('show');
   };
   $scope.addUser = function() {
-    $scope.currentUser = {};
+    $scope.currentUser = {title: ""};
     jQuery('#userDateOfBirth').datetimepicker({
       format: 'L'
     });
@@ -39,7 +41,7 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
   };
   $scope.saveUser = function(){
     let title = $scope.currentUser.title;
-    if(title.toLowerCase() === "mr" || title.toLowerCase() === "dr"){
+    if(title.toLowerCase() === "mr"){
       $scope.currentUser.gender = "M";
     } else if (title.toLowerCase() === "mrs" || title.toLowerCase() === "miss" || title.toLowerCase() === "ms") {
       $scope.currentUser.gender = "F";
@@ -55,11 +57,13 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
         $scope.userResults.push($scope.currentUser);
       }
       jQuery('#userDetailModal .modal').modal('hide'); 
+    } else {
+      
     }
   };
   $scope.validateUser = function(name,data) {
     if(name === "userName") {
-      if (! /^[a-zA-Z0-9\-_]+$/.test(data)) {
+      if (! /^[a-zA-Z0-9\-_]+$/.test(data) || typeof data === 'undefined' || data === null) {
           $scope.userUserNameInvalid = true;
           return false;
       } else {
@@ -67,7 +71,7 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
         return true;
       }
     } else if (name === "dateOfBirth") {
-      if(! /^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/.test(data)) {
+      if(! /^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/.test(data) || typeof data === 'undefined' || data === null) {
         $scope.userUserDateOfBirthInvalid = true;
         return false;
       } else {
@@ -80,26 +84,46 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
       return true;
     }
   };
-  $scope.getValidationErrorMessage = function(name) {
-    var error = "";
-    if(name === "userName") {
-      error = "User names can only contain letters, numbers, hyphens andunderscores. Any other character is not allowed";
-    } else if (name === "dateOfBirth") {
-      error = "Please enter your date of birth in the format 'year-month-date'. For example for the 18th June 1991 enter 1991-06-18";
-    } else if (name === "firstName") {
-      error = "Please enter your first name into the corrosponding field";
-    } else if (name === "lastName") {
-      error = "Please enter your last name into the corrosponding field";
-    }
-    return error;
-  };
   $scope.validateUserData = function(data) {
     if(typeof data !== 'undefined' && data !== null){
       var userNameIsValid = $scope.validateUser("userName", data.userName);
+      if(!userNameIsValid){
+        $scope.userNameInvalid = true;
+      } else {
+        $scope.userNameInvalid = false;
+      }
       var dateOfBirthIsValid = $scope.validateUser("dateOfBirth", data.dateOfBirth);
+      if(!dateOfBirthIsValid){
+        $scope.userDateOfBirthInvalid = true;
+      } else {
+        $scope.userDateOfBirthInvalid = false;
+      }
       var emailNotEmpty = $scope.validateUser("email", data.email);
       var emailValid = userDetailsForm.userEmail.validity.valid;
-      return userNameIsValid && dateOfBirthIsValid && emailNotEmpty && emailValid;
+      if(!emailNotEmpty || !emailValid){
+        $scope.userEmailInvalid = true;
+      } else {
+        $scope.userEmailInvalid = false;
+      }
+      var firstNameValid = $scope.validateUser("firstName", data.firstName);
+      if(!firstNameValid){
+        $scope.firstNameInvalid = true;
+      } else {
+        $scope.firstNameInvalid = false;
+      }
+      var lastNameValid = $scope.validateUser("lastName", data.lastName);
+      if(!lastNameValid){
+        $scope.lastNameInvalid = true;
+      } else {
+        $scope.lastNameInvalid = false;
+      }
+      var titleValid = $scope.validateUser("title",data.title);
+      if(!titleValid){
+        $scope.userTitleInvalid = true;
+      } else {
+        $scope.userTitleInvalid = false;
+      }
+      return userNameIsValid && dateOfBirthIsValid && emailNotEmpty && emailValid && firstNameValid && lastNameValid && titleValid;
     } else {
       return false;
     }
