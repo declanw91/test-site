@@ -36,7 +36,7 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
     $scope.currentUser = $scope.userResults[index];
     $scope.currentUser.id = index;
     jQuery('#userDateOfBirth').datetimepicker({
-      format: 'L',
+      format: 'DD/MM/YYYY',
       defaultDate: $scope.currentUser.dateOfBirth,
     });
     $scope.saveAction = 'update';
@@ -46,7 +46,8 @@ userdisplay.controller('userdisplayctrl', function($scope, $http) {
   $scope.addUser = function() {
     $scope.currentUser = {title: ""};
     jQuery('#userDateOfBirth').datetimepicker({
-      format: 'L'
+      format: 'DD/MM/YYYY',
+      viewMode: 'years'
     });
     jQuery('#userDetailModal .modal').modal('show');
   };
