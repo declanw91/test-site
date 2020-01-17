@@ -7,6 +7,7 @@ app.controller('myBlogController',function($scope, $http) {
       var jsondata = JSON.parse(jsonstring);
       $scope.blogPosts = jsondata;
       jQuery('#blogLoadingBar .progress-bar').css('width','100%');
+      jQuery('#blogPosts').show();
       jQuery('#blogLoadingBar').hide();
     });
 });
