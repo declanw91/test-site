@@ -39,9 +39,8 @@
       <div id="BlackjackWrapper" class="container-fluid">
         <div id="gamearea" class="col-12 mt-2">
             <blackjackheader></blackjackheader>
-            <gamedisplayarea></gamedisplayarea>
-            <playeroptions></playeroptions>
-            
+            <gamedisplayarea v-if="gameRunning" :playerCards="playerCards" :dealerCards="dealerCards"></gamedisplayarea>
+            <playeroptions :gameOver="gameOver" :playerCards="playerCards" :dealerCards="dealerCards" :playerBust="playerBust" :startGame="startGame" :gameRunning="gameRunning"></playeroptions>
         </div>
       </div>
 
