@@ -38,7 +38,7 @@
 
     <main role="main" class="container"  data-ng-app="userdisplay" data-ng-controller="userdisplayctrl">
 
-      <div class="container-fluid">
+      <div class="container-fluid" ng-cloak>
         <div id="pageHeader" class="col-12">
           <h2 class="text-center">User Manger</h2>
         </div>
@@ -46,7 +46,7 @@
           <button id="addUser" class="addUser" data-ng-click="addUser()">Add User</button>
         </div>
         <div id="userListDisplay">
-          <table class="table table-striped" data-ng-show="showUserList">
+          <table class="table table-striped">
             <thead>
               <tr class="tableheaders">
                 <th scope="col" class="userTitle">Title</th>
