@@ -53,7 +53,10 @@ function content_5dfe8f0b3a51a7_08242671 (Smarty_Internal_Template $_smarty_tpl)
 			  </li>
 			  <li class="nav-item">
 				<a class="nav-link" href="../examples.html">Examples</a>
-			  </li>
+				</li>
+				<li class="nav-item">
+            <a class="nav-link" href="../about.html">About</a>
+          </li>
 			</ul>
 		  </div>
 		</nav>
