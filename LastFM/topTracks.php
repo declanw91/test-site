@@ -1,6 +1,6 @@
 <?php
     require '../config.php';
-    $query = LFLINK . LASTFM_KEY . "&limit=10&method=user.gettoptracks";
+    $query = LFLINK . LASTFM_KEY . "&limit=20&method=user.gettoptracks";
     $resp = simplexml_load_file($query);
     header('Content-Type: application/json');
     $i = 0;

@@ -39,8 +39,8 @@
                         //Make a database search by creating a database object and preparing a select statement and then entering the user's selected colour into it. Then print the results
                         $i = 0;
                         echo '<h2 class="Title">' . $_SESSION['colour'] . ' Wine List</h2>'; //Print title
-                        $dbh = new PDO('mysql:host='.DB_HOST.'; dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD); //Create database handle and connection
-                        $stmt = $dbh->prepare("SELECT wines.name, wines.year, wines.price, regions.name AS region FROM wines, regions WHERE color= :r AND regions.id=wines.region_id"); //Prepare MySQL statement with placeholder
+                        $dbh = new PDO('sqlsrv:Server:'.DB_HOST.';Database=' . DB_NAME, DB_USERNAME, DB_PASSWORD); //Create database handle and connection
+                        $stmt = $dbh->prepare("SELECT Wines.Name, Wines.Year, Wines.Price, Regions.RegionName AS Regions FROM Wines, Regions WHERE Color= :r AND Regions.RegionId=Wines.RegionId"); //Prepare MySQL statement with placeholder
                         $stmt->bindValue(":r", $_SESSION['colour']); //Bind placeholder to user's selected colour
                         $stmt->execute(); //Execute statement
                         //Print results out in a table with add buttons and quantity text field
