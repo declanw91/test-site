@@ -41,9 +41,16 @@
 
       <div id="msalTestSite" class="container-fluid">
         <h1>MSAL Test</h1>
-        <div>
-            <button onclick="SignIn()" class="btn-primary">Sign in</button>
-            <button onclick="LogOut()" class="btn-primary">Sign out</button>
+        <div class="buttons">
+            <button id="signInBtn" onclick="SignIn()" class="btn-primary">Sign in</button>
+            <button id="signOutBtn" onclick="LogOut()" class="btn-primary">Sign out</button>
+        </div>
+        <div class="profileDetails">
+          <h1>MS Graph Profile Details</h1>
+          <p><span>Display name: </span><span id="userDisplayName"></span></p>
+          <p><span>Given name: </span><span id="userGivenName"></span></p>
+          <p><span>Surname: </span><span id="userSurname"></span></p>
+          <p><span>Principal name: </span><span id="userPrincipalName"></span></p>
         </div>
       </div>
 
