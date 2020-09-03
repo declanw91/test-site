@@ -49,6 +49,7 @@
               <h2>{{x.Title}}</h2>
             </div>
             <div class="blogContent" data-ng-bind-html="x.Content.Text"></div>
+            <div class="blogDate"><span>Posted at: </span><span data-ng-bind="formatDate(x.DateCreated) |  date:'dd/MM/yyyy HH:mm'"></span></div>
           </div>
         </div>
       </div>

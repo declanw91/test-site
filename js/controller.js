@@ -10,4 +10,8 @@ app.controller('myBlogController',function($scope, $http) {
       jQuery('#blogPosts').show();
       jQuery('#blogLoadingBar').hide();
     });
+    $scope.formatDate = function(date) {
+      var dateOut = new Date(date);
+      return dateOut;
+    };
 });
