@@ -9,6 +9,10 @@ app.controller('myBlogController',function($scope, $http) {
       jQuery('#blogLoadingBar .progress-bar').css('width','100%');
       jQuery('#blogPosts').show();
       jQuery('#blogLoadingBar').hide();
+    },
+    function(data) {
+      jQuery('#blogLoadingBar').hide();
+      jQuery('#blogError').show();
     });
     $scope.formatDate = function(date) {
       var dateOut = new Date(date);
