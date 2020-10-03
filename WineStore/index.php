@@ -39,21 +39,24 @@
                         //Make a database search by creating a database object and preparing a select statement and then entering the user's selected colour into it. Then print the results
                         $i = 0;
                         echo '<h2 class="Title">' . $_SESSION['colour'] . ' Wine List</h2>'; //Print title
-                        $dbh = new PDO('sqlsrv:Server:'.DB_HOST.';Database=' . DB_NAME, DB_USERNAME, DB_PASSWORD); //Create database handle and connection
-                        $stmt = $dbh->prepare("SELECT Wines.Name, Wines.Year, Wines.Price, Regions.RegionName AS Regions FROM Wines, Regions WHERE Color= :r AND Regions.RegionId=Wines.RegionId"); //Prepare MySQL statement with placeholder
+                        echo $_SESSION['colour'];
+                        $conn = new PDO("sqlsrv:server=".DB_HOST."; database =".DB_NAME, DB_USERNAME, DB_PASSWORD);
+                        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );  
+                        $stmt = $conn->prepare("SELECT Wines.Name, Wines.Year, Wines.Price, Regions.RegionName AS Regions FROM Wines, Regions WHERE Wines.Color= :r AND Regions.RegionId=Wines.RegionId"); //Prepare MySQL statement with placeholder
                         $stmt->bindValue(":r", $_SESSION['colour']); //Bind placeholder to user's selected colour
                         $stmt->execute(); //Execute statement
+                        
                         //Print results out in a table with add buttons and quantity text field
                         echo '<table border=3>';
                         echo "<tr><td>Name</td><td>Price</td><td>Year</td><td>Region</td></tr>";
                         while ($row = $stmt->fetch()) {
                             echo '<tr>';
-                            print "<td> " . $row['name'] . "</td> ";
-                            $wineList[] = $row['name'];
-                            $priceList[] = $row['price'];
-                            echo "<td> £" . $row['price'] . "</td> ";
-                            echo "<td> " . $row['year'] . "</td> ";
-                            echo "<td> " . $row['region'] . "</td> ";
+                            print "<td> " . $row['Name'] . "</td> ";
+                            $wineList[] = $row['Name'];
+                            $priceList[] = $row['Price'];
+                            echo "<td> £" . $row['Price'] . "</td> ";
+                            echo "<td> " . $row['Year'] . "</td> ";
+                            echo "<td> " . $row['Regions'] . "</td> ";
                             echo '<td> <form action="" method="POST"><input type="hidden" name="id" value="' . $i . '"/>
                               <input class="qty" type="text" name="qty" value="1" maxlength="2"/> <br/>
                               <input class="add" type="Submit" name="selected" value="Add"/></form></td>';
