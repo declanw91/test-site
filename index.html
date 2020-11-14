@@ -88,10 +88,10 @@
               <h5>My Recent Tracks</h5>
               <div id="myTracks" class="row" data-ng-app="myTracks" data-ng-controller="myTracksController">
                 <div class="row" data-ng-repeat="x in recentTracks">
-                  <div class="col-2">
+                  <div class="mr-2 mt-2">
                       <img src="{{x.TrackImage}}" alt="TrackImage" width="50"/>
                   </div>
-                  <div class="col-10 mb-2">
+                  <div class="mb-2">
                       <p class="m-0 h6">Name: {{x.TrackName}}</p>
                       <p class="m-0">Artist: {{x.TrackArtist}}</p>
                       <p class="m-0">Album: {{x.TrackAlbum}}</p>
