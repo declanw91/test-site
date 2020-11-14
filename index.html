@@ -78,16 +78,16 @@
         </div>
         <div class="row work boxShadow">
           <div class="row mt-2">
-            <div class="col-4">
+            <div class="col-6">
               <h5>My Tweets</h5>
               <div id="myTweets">
 
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
               <h5>My Recent Tracks</h5>
               <div id="myTracks" class="row" data-ng-app="myTracks" data-ng-controller="myTracksController">
-                <div class="row" data-ng-repeat="x in recentTracks">
+                <div class="row col-12" data-ng-repeat="x in recentTracks">
                   <div class="mr-2 mt-2">
                       <img src="{{x.TrackImage}}" alt="TrackImage" width="50"/>
                   </div>
@@ -97,12 +97,6 @@
                       <p class="m-0">Album: {{x.TrackAlbum}}</p>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-4">
-              <h5>My Photos</h5>
-              <div id="myPhotos">
-
               </div>
             </div>
           </div>
