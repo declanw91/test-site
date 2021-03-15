@@ -48,16 +48,16 @@
         </div>
         <div class="row work boxShadow">
           <div class="row mt-2">
-            <div class="col-6">
+            <div class="col-4">
               <h5>My Tweets</h5>
               <div id="myTweets">
 
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-4">
               <h5>My Recent Tracks</h5>
               <div id="myTracks" class="row" data-ng-app="myTracks" data-ng-controller="myTracksController">
-                <div class="row col-12" data-ng-repeat="x in recentTracks">
+                <div class="row" data-ng-repeat="x in recentTracks">
                   <div class="mr-2 mt-2">
                       <img src="{{x.TrackImage}}" alt="TrackImage" width="50"/>
                   </div>
@@ -69,6 +69,7 @@
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
         <div id="blogPosts" style="display: none;">
           <div class="blogPost row" data-ng-repeat="x in blogPosts">
             <div class="blogTitle container">
@@ -76,6 +77,14 @@
             </div>
             <div class="blogContent" data-ng-bind-html="x.Content.Text"></div>
             <div class="blogDate"><span>Posted at: </span><span data-ng-bind="formatDate(x.DateCreated) |  date:'dd/MM/yyyy HH:mm'"></span></div>
+=======
+            <div class="col-4">
+              <h5>My Photos</h5>
+              <div id="myPhotos">
+
+              </div>
+            </div>
+>>>>>>> parent of 66d419f... test site updates
           </div>
         </div>
       </div>
