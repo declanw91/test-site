@@ -206,17 +206,3 @@ main {
   text-align: center;
   width: 100%;
 }
-
-.fullProfileImage {
-  max-height: 420px;
-}
-
-.workLinks li {
-  width: 50%;
-  float: left;
-}
-
-.personalLinks li {
-  width: 33%;
-  float: left;
-}
