@@ -1,0 +1,233 @@
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+
+.col-md-offset-2 {
+  margin-left: 15.667%;
+}
+
+.panel-body .table a {
+  color: #FFFFFF;
+}
+
+.navbar-brand {
+  color: #FFFFFF;
+}
+
+.panel-default > .panel-heading {
+  background-color: #221226;
+  color: #FFFFFF;
+}
+
+#accordion .panel {
+  background-color: #221226;
+  border: 1px solid transparent;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+  border-top: none;
+}
+
+.panel-group .panel-heading + .panel-collapse > .list-group, .panel-group .panel-heading + .panel-collapse > .panel-body {
+  border-top: none;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #311A37;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+.glyphicon.glyphicon-one-fine-full-dot {
+    color: #FFFFFF;
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-full-dot:before {
+    content:"\25cf";
+    font-size: 22px;
+    color: #FFFFFF;
+    padding-right: 5px;
+}
+.glyphicon.glyphicon-one-fine-empty-dot {
+    color: #FFFFFF;
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-empty-dot:before {
+    content:"\25cb";
+    color: #FFFFFF;
+    font-size: 22px;
+    padding-right: 5px;
+}
+
+.nav-tabs a {
+  color: #7B8A89;
+}
+
+.nav-tabs > li > a {
+  border: 1px solid #BEC9CC;
+  border-bottom: none;
+}
+
+.nav-tabs > li.active > a {
+  border: 1px solid #000000;
+  border-color: #000000;
+  border-bottom: none;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #000000;
+}
+
+.tab-content {
+  border-left: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  margin-top: -20px;
+}
+
+.tab-pane {
+  padding: 25px;
+}
+
+.productimage, .styleinfo, .proddescription {
+  display: inline-block;
+}
+
+.styleno {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.stylenotitle, .proddescription {
+  font-style: italic;
+  color: #BCC7C9;
+  font-size: 11px;
+}
+
+.productinfo {
+  float: right;
+  width:10%;
+  padding:5px;
+}
+
+.infoelement {
+  padding:5px;
+}
+
+span.attrvalue {
+  float: right;
+}
+
+.attrname, .totalvalue {
+  font-weight: bold;
+}
+
+.infoelement {
+  background-color: #EDF0F1;
+  margin-bottom: 5px;
+}
+
+.detailsheader {
+  font-size: 16px;
+  margin: 0;
+  background-color: #EDF0F1;
+  padding: 10px;
+  margin: 0 0 5px;
+  font-weight: bold;
+}
+
+.styletext {
+
+}
+
+.optionstablewrapper {
+  margin-top: 20px;
+  border: 1px solid #000000;
+}
+
+.tableoptions {
+  padding: 10px;
+}
+
+.tablerow {
+  margin-bottom: 20px;
+}
+
+.stylesetting {
+  margin-bottom: 20px;
+}
+
+.optionwrapper {
+  display: inline-block;
+  width: 24%;
+}
+
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;
+}
+::-moz-placeholder {
+   font-style: italic;
+}
+:-ms-input-placeholder {
+   font-style: italic;
+}
+
+.optionwrapper select {
+  width: 80%;
+}
+
+.topnavbar {
+  background-color: #FFFFFF;
+  color: #000000;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #F3F3F3;
+}
+
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+  color: #000000;
+}
+
+.styleinfo {
+  margin-top: 10px;
+}
+
+.tabbedarea {
+  margin-left: 10px;
+}
