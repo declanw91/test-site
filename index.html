@@ -46,29 +46,6 @@
         <div id="blogError" style="display: none;">
           <p>Sorry we are unable to load blog posts at this time. Please try again later.</p>
         </div>
-        <div class="row work boxShadow">
-          <div class="row mt-2">
-            <div class="col-4">
-              <h5>My Tweets</h5>
-              <div id="myTweets">
-
-              </div>
-            </div>
-            <div class="col-4">
-              <h5>My Recent Tracks</h5>
-              <div id="myTracks" class="row" data-ng-app="myTracks" data-ng-controller="myTracksController">
-                <div class="row" data-ng-repeat="x in recentTracks">
-                  <div class="mr-2 mt-2">
-                      <img src="{{x.TrackImage}}" alt="TrackImage" width="50"/>
-                  </div>
-                  <div class="mb-2">
-                      <p class="m-0 h6">Name: {{x.TrackName}}</p>
-                      <p class="m-0">Artist: {{x.TrackArtist}}</p>
-                      <p class="m-0">Album: {{x.TrackAlbum}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
         <div id="blogPosts" style="display: none;">
           <div class="blogPost row" data-ng-repeat="x in blogPosts">
             <div class="blogTitle container">
@@ -76,12 +53,6 @@
             </div>
             <div class="blogContent" data-ng-bind-html="x.Content.Text"></div>
             <div class="blogDate"><span>Posted at: </span><span data-ng-bind="formatDate(x.DateCreated) |  date:'dd/MM/yyyy HH:mm'"></span></div>
-            <div class="col-4">
-              <h5>My Photos</h5>
-              <div id="myPhotos">
-
-              </div>
-            </div>
           </div>
         </div>
       </div>
