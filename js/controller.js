@@ -1,11 +1,10 @@
 app.controller('myBlogController',function($scope, $http) {
-    $http.get("https://www.googleapis.com/blogger/v3/blogs/4886411145150219450/posts?key=AIzaSyC0riQba2dvjxg-MLAT3hiJTCwUAS702x0")
+    $http.get("GetBlogPosts.php")
     .then(function (response) {
       jQuery('#blogLoadingBar .progress-bar').css('width','75%');
-      var jsonstring = JSON.stringify(response.data.items);
+      var jsonstring = JSON.stringify(response.data);
       jsonstring = jsonstring.replace(/\+0000\s2\d{2,}/g, "");
       var jsondata = JSON.parse(jsonstring);
-      console.log(jsondata);
       $scope.blogPosts = jsondata;
       jQuery('#blogLoadingBar .progress-bar').css('width','100%');
       jQuery('#blogPosts').show();
@@ -19,6 +18,4 @@ app.controller('myBlogController',function($scope, $http) {
       var dateOut = new Date(date);
       return dateOut;
     };
-    //4886411145150219450
-    //AIzaSyC0riQba2dvjxg-MLAT3hiJTCwUAS702x0
 });
