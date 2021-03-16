@@ -1,5 +1,5 @@
 <?php
-$query = "http://www.blogger.com/feeds/4886411145150219450/posts/default";
+$query = "https://www.blogger.com/feeds/4886411145150219450/posts/default";
 $resp = simplexml_load_file($query);
 header('Content-Type: application/json');
 echo '[';

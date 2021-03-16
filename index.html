@@ -39,7 +39,7 @@
 
     <main role="main" class="container">
 
-      <div id="BlogPostsWrapper" class="container-fluid" data-ng-app="myBlogs" data-ng-controller="myBlogController">
+      <div id="BlogPostsWrapper" class="container-fluid" data-ng-app="myBlogs" data-ng-controller="myBlogController" data-ng-init="init()">
         <div id="blogLoadingBar" class="progress">
          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%"></div>
         </div> 
@@ -49,10 +49,10 @@
         <div id="blogPosts" style="display: none;">
           <div class="blogPost row" data-ng-repeat="x in blogPosts">
             <div class="blogTitle container">
-              <h2>{{x.Title}}</h2>
+              <h2>{{x.title}}</h2>
             </div>
-            <div class="blogContent" data-ng-bind-html="x.Content.Text"></div>
-            <div class="blogDate"><span>Posted at: </span><span data-ng-bind="formatDate(x.DateCreated) |  date:'dd/MM/yyyy HH:mm'"></span></div>
+            <div class="blogContent" data-ng-bind-html="x.content"></div>
+            <div class="blogDate"><span>Posted at: </span><span data-ng-bind="formatDate(x.published) |  date:'dd/MM/yyyy HH:mm'"></span></div>
           </div>
         </div>
       </div>
