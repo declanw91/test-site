@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+
+    <title>Declan Wright</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/myStyles.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Declan Wright</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href=".">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="examples.html">Examples</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+
+      <div id="BlogPostsWrapper" class="container-fluid" data-ng-app="myBlogs" data-ng-controller="myBlogController" data-ng-init="init()">
+        <div id="blogLoadingBar" class="progress">
+         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%"></div>
+        </div> 
+        <div id="blogError" style="display: none;">
+          <p>Sorry we are unable to load blog posts at this time. Please try again later.</p>
+        </div>
+        <div id="blogPosts" style="display: none;">
+          <div class="blogPost row" data-ng-repeat="x in blogPosts">
+            <div class="blogTitle container">
+              <h2>{{x.title}}</h2>
+            </div>
+            <div class="blogContent" data-ng-bind-html="x.content"></div>
+            <div class="blogDate"><span>Posted at: </span><span data-ng-bind="formatDate(x.published) |  date:'dd/MM/yyyy HH:mm'"></span></div>
+          </div>
+        </div>
+      </div>
+
+    </main><!-- /.container -->
+
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="js/angular.min.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/controller.js" type="text/javascript"></script>
+  </body>
+</html>

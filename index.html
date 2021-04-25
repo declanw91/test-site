@@ -17,7 +17,7 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Declan Wright</a>
+      <a class="navbar-brand" href=".">Declan Wright</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -25,13 +25,13 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href=".">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="examples.html">Examples</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="blog.html">Blog</a>
           </li>
         </ul>
       </div>
@@ -39,20 +39,41 @@
 
     <main role="main" class="container">
 
-      <div id="BlogPostsWrapper" class="container-fluid" data-ng-app="myBlogs" data-ng-controller="myBlogController" data-ng-init="init()">
-        <div id="blogLoadingBar" class="progress">
-         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%"></div>
-        </div> 
-        <div id="blogError" style="display: none;">
-          <p>Sorry we are unable to load blog posts at this time. Please try again later.</p>
-        </div>
-        <div id="blogPosts" style="display: none;">
-          <div class="blogPost row" data-ng-repeat="x in blogPosts">
-            <div class="blogTitle container">
-              <h2>{{x.title}}</h2>
+      <div id="AboutWrapper" class="container-fluid work">
+        <div class="row">
+          <h3 class="col-12 text-center">About Me</h3>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-4 text-center">
+                <img src="images/profile-v2.jpg" style="max-width: 100%;" alt="profile" title="profile" />
+              </div>
+              <div class="col-8">
+                <p>
+                  Hi I'm Declan, a london based nerd with a passion for web development. After creating my first website at college 
+                  I decided that I wanted to work in development, building products that people would use as it's great to see
+                  something you thought of in your head come to life.
+                </p>
+                <p>
+                  Development has taken me from working in e-commerce, to my first business trip to New Zealand, from working on websites to
+                  working on mobile apps used in the rail industry. I am always looking forward to where the job is going to take me next.
+                </p>
+                <p class="mb-0">Work links:</p>
+                <ul class="workLinks list-unstyled">
+                  <li><span class="mr-1"><i class="fab fa-github"></i></span><a href="https://github.com/declanw91">Github</a></li>
+                  <li><span class="mr-1"><img src="images/favicon.ico" alt="personal site"/></span><a href=".">Personal site</a></li>
+                </ul>
+                <p>
+                  Can also be found wandering around London looking for food markets to try out new foods or playing video games
+                  to help unwind.
+                </p>
+                <p class="mb-0">Social links:</p>
+                <ul class="personalLinks list-unstyled">
+                  <li><span class="mr-1"><i class="fab fa-twitter"></i></span><a href="https://twitter.com/declanw47">Twitter</a></li>
+                  <li><span class="mr-1"><i class="fab fa-lastfm-square"></i></span><a href="https://www.last.fm/user/Dec147">LastFm</a></li>
+                  <li><span class="mr-1"><i class="fab fa-instagram"></i></span><a href="https://www.instagram.com/declanw47/">Instagram</a></li>
+                </ul>
+              </div>
             </div>
-            <div class="blogContent" data-ng-bind-html="x.content"></div>
-            <div class="blogDate"><span>Posted at: </span><span data-ng-bind="formatDate(x.published) |  date:'dd/MM/yyyy HH:mm'"></span></div>
           </div>
         </div>
       </div>
@@ -61,8 +82,6 @@
 
     <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    <script src="js/angular.min.js" type="text/javascript"></script>
-    <script src="js/app.js" type="text/javascript"></script>
-    <script src="js/controller.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/531dfb0810.js" crossorigin="anonymous"></script>
   </body>
 </html>
