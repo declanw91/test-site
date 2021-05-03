@@ -5,7 +5,6 @@ app.controller('myBlogController',function($scope, $http) {
       var jsonstring = JSON.stringify(response.data.items);
       jsonstring = jsonstring.replace(/\+0000\s2\d{2,}/g, "");
       var jsondata = JSON.parse(jsonstring);
-      console.log(jsondata);
       $scope.blogPosts = jsondata;
       jQuery('#blogLoadingBar .progress-bar').css('width','100%');
       jQuery('#blogPosts').show();
