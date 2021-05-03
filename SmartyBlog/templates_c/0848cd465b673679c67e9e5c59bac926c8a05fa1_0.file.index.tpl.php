@@ -47,18 +47,18 @@ function content_5dfe8f0b3a51a7_08242671 (Smarty_Internal_Template $_smarty_tpl)
 		  </button>
 
 		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-			<ul class="navbar-nav mr-auto">
-			  <li class="nav-item active">
-				<a class="nav-link" href="../">Home</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="../examples.html">Examples</a>
-				</li>
-				<li class="nav-item">
-            <a class="nav-link" href="../about.html">About</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../">Home</a>
           </li>
-			</ul>
-		  </div>
+          <li class="nav-item">
+            <a class="nav-link" href="../examples.html">Examples</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../blog.html">Blog</a>
+          </li>
+        </ul>
+      </div>
 		</nav>
 		<main role="main" class="container">
 
