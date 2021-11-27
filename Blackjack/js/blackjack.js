@@ -139,7 +139,6 @@ function startGame() {
   updateScore("player", playerCards);
   updateScore("dealer", dealerCards);
   jQuery('#gamearea').show();
-  checkForWinner();
 }
 
 function playerHits() {
