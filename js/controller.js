@@ -1,5 +1,5 @@
 app.controller('myBlogController',function($scope, $http) {
-    $http.get("https://www.googleapis.com/blogger/v3/blogs/4886411145150219450/posts?key=")
+    $http.get("https://www.googleapis.com/blogger/v3/blogs/4886411145150219450/posts?&maxResults=100&key=")
     .then(function (response) {
       jQuery('#blogLoadingBar .progress-bar').css('width','75%');
       var jsonstring = JSON.stringify(response.data.items);
