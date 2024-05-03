@@ -5,6 +5,7 @@ var playerStartCardCount = 2;
 var dealerStartCardCount = 1;
 var playerScore = {};
 var dealerScore = {};
+var gameContinues = true;
 
 function resetTheDecks() {
   cardArray = [];
@@ -112,16 +113,20 @@ function updateScore(user, cards) {
 function checkForWinner(){
     if (playerScore.lowScore > 21 && playerScore.highScore > 21){
       DisableControls();
-      alert("You are bust. Thanks for playing");
+      gameContinues = false;
+      jQuery('#playerMessage').html("<p>You are bust. Thanks for playing</p>");
     } else if (playerScore.lowScore === 21 || playerScore.highScore === 21) {
-      alert("You have 21, you win! Thanks for playing!");
       DisableControls();
+      gameContinues = false;
+      jQuery('#playerMessage').html("<p>You have 21, you win! Thanks for playing!</p>");
     } else if (dealerScore.lowScore > 21 && dealerScore.highScore > 21){
       DisableControls();
-      alert("Dealer is bust, you win! Thanks for playing");
+      gameContinues = false;
+      jQuery('#playerMessage').html("<p>Dealer is bust, you win! Thanks for playing</p>");
     } else if (dealerScore.lowScore === 21 || dealerScore.highScore === 21) {
-      alert("Dealer has 21, you lose! Thanks for playing!");
       DisableControls();
+      gameContinues = false;
+      jQuery('#playerMessage').html("<p>Dealer has 21, you lose! Thanks for playing!</p>");
     }
 }
 
@@ -138,7 +143,9 @@ function startGame() {
   displayCards("dealer", dealerCards);
   updateScore("player", playerCards);
   updateScore("dealer", dealerCards);
+  jQuery('#playerMessage').html('');
   jQuery('#gamearea').show();
+  gameContinues = true;
 }
 
 function playerHits() {
@@ -153,17 +160,22 @@ function playerSticks() {
   var playerScores = calculateScore(playerCards);
   var dealerScores = calculateScore(dealerCards);
   var delay = 1000; //1 second
-  if((dealerScores.lowScore <= playerScores.lowScore || dealerScores.highScore <= playerScores.highScore) && (dealerScores.lowScore < 21 || dealerScores.highScore < 21)) {
-    setTimeout(function() {
-      drawCard("dealer");
+  if(gameContinues) {
+    if((dealerScores.lowScore <= playerScores.lowScore || dealerScores.highScore <= playerScores.highScore) && (dealerScores.lowScore < 21 || dealerScores.highScore < 21)) {
+      setTimeout(function() {
+        drawCard("dealer");
+        displayCards("dealer", dealerCards);
+        updateScore("dealer", dealerCards);
+        checkForWinner();
+        playerSticks();
+      }, delay);
+    } 
+    if ((dealerScores.lowScore > playerScores.lowScore || dealerScores.highScore > playerScores.highScore) && (dealerScores.lowScore < 21 && dealerScores.highScore < 21)) {
+      gameContinues = false;
       displayCards("dealer", dealerCards);
-      updateScore("dealer", dealerCards);
-      checkForWinner();
-      playerSticks();
-    }, delay);
-  } 
-  if ((dealerScores.lowScore > playerScores.lowScore || dealerScores.highScore > playerScores.highScore) && (dealerScores.lowScore < 21 && dealerScores.highScore < 21)) {
-    alert("Dealer has higher hand, you lose. Thanks for playing.");
+        updateScore("dealer", dealerCards);
+      jQuery('#playerMessage').html("<p>Dealer has higher hand, you lose. Thanks for playing!</p>");
+    }
   }
 }
 
